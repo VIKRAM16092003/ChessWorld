@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 hello i am hari
+=======
+
+this is main branch.
+>>>>>>> 17908e37123d7292642c41591182daf8591b0500
+hii i am hari
