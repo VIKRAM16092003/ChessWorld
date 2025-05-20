@@ -37,13 +37,16 @@ function Lesson() {
   return (
     <div className="lesson-page bg-indigo-100" style={{ padding: "2rem" }}>
       <div className="mx-5"><p className="h2 fw-bold text-shadow-lg py-2 mx-5" style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</p></div>
-      
-      <div className="lesson-grid" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+      <div className="ms-5">
+      <div className="lesson-grid ms-5" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "start" }}>
         {lessons.map((lesson) => (
           <div
             key={lesson.id}
             className="lesson-card"
             style={{
+              display: "flex",               // Flex container
+              flexDirection: "column",       // Stack content vertically
+              justifyContent: "space-between", // Push button to bottom
               border: "1px solid #ccc",
               borderRadius: "12px",
               padding: "20px",
@@ -52,13 +55,17 @@ function Lesson() {
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
             }}
           >
-            <h4>{lesson.title}</h4>
+            <h4 className="text-shadow-md">{lesson.title}</h4>
             <p>{lesson.description}</p>
-            <button className="btn btn-secondary" onClick={() => handleStartLesson(lesson.id)}>
+             <button className="btn btn-secondary" onClick={() => handleStartLesson(lesson.id)}>
               Start Lesson
             </button>
           </div>
+          
+          
         ))}
+       
+      </div>
       </div>
     </div>
   );

@@ -3,15 +3,7 @@ import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
 
-const defaultPGN = `[Event "Casual Game"]
-[Site "Local"]
-[Date "2025.05.20"]
-[Round "-"]
-[White "Player1"]
-[Black "Player2"]
-[Result "*"]
-
-1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 *`;
+const defaultPGN = `1 e4 e5 2 Nf3 Nc6 3 Bb5 a6*`;
 
 const Analyse = () => {
   const [game, setGame] = useState(new Chess());
