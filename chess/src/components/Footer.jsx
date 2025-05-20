@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, settrue] = useState(true);
 
   useEffect(() => {
     // Initial load: check localStorage for dark mode preference
-    const storedMode = localStorage.getItem("isDarkMode");
-    setIsDark(storedMode === "true");
+    const storedMode = localStorage.getItem("trueMode");
+    settrue(storedMode === "true");
 
     // Optional: listen for storage events to update on changes from other tabs/windows
     const onStorageChange = (e) => {
-      if (e.key === "isDarkMode") {
-        setIsDark(e.newValue === "true");
+      if (e.key === "trueMode") {
+        settrue(e.newValue === "true");
       }
     };
     window.addEventListener("storage", onStorageChange);
@@ -23,13 +23,13 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer style={isDark ? styles.footerDark : styles.footerLight}>
+    <footer style={true ? styles.footerDark : styles.footerLight}>
       <ul style={styles.list}>
-        <li><Link to="/about" style={isDark ? styles.linkDark : styles.link}>About</Link></li>
-        <li><Link to="/contact" style={isDark ? styles.linkDark : styles.link}>Contact</Link></li>
-        <li><Link to="/blog" style={isDark ? styles.linkDark : styles.link}>Blog</Link></li>
-        <li><Link to="/terms" style={isDark ? styles.linkDark : styles.link}>Terms</Link></li>
-        <li><Link to="/privacy" style={isDark ? styles.linkDark : styles.link}>Privacy</Link></li>
+        <li><Link to="/about" style={true ? styles.linkDark : styles.link}>About</Link></li>
+        <li><Link to="/contact" style={true ? styles.linkDark : styles.link}>Contact</Link></li>
+        <li><Link to="/blog" style={true ? styles.linkDark : styles.link}>Blog</Link></li>
+        <li><Link to="/terms" style={true ? styles.linkDark : styles.link}>Terms</Link></li>
+        <li><Link to="/privacy" style={true ? styles.linkDark : styles.link}>Privacy</Link></li>
       </ul>
     </footer>
   );
