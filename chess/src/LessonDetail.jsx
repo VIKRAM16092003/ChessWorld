@@ -107,7 +107,7 @@ function LessonDetail() {
 
   if (!lesson) {
     return (
-      <div style={{ padding: "2rem" }}>
+      <div className="bg-indigo-100" style={{ padding: "2rem" }}>
         <h2>Lesson not found</h2>
         <button className="btn btn-outline-dark" onClick={() => navigate("/lesson")}>
           Back to Lessons
@@ -117,7 +117,13 @@ function LessonDetail() {
   }
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className="bg-indigo-100 p-5">
+    <div className="mb-5" style={{ padding: "2rem" }}>
+      <div className="mb-5">
+        <div className="mb-5">
+          <div className="mb-5">
+            <div className="mb-5">
+              <div className="mb-5">
       <button className="btn btn-outline-dark mb-3" onClick={() => navigate("/lesson")}>
         ← Back to Lessons
       </button>
@@ -132,6 +138,14 @@ function LessonDetail() {
         {lesson.content}
       </pre>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <p className="h3 bg-indigo-100 mb-5 pb-20"></p>
+    </div>
+    
   );
 }
 

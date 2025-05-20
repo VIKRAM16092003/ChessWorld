@@ -35,8 +35,9 @@ function Lesson() {
   };
 
   return (
-    <div className="lesson-page" style={{ padding: "2rem" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</h2>
+    <div className="lesson-page bg-indigo-100" style={{ padding: "2rem" }}>
+      <div className="mx-5"><p className="h2 fw-bold text-shadow-lg py-2 mx-5" style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</p></div>
+      
       <div className="lesson-grid" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
         {lessons.map((lesson) => (
           <div
@@ -53,7 +54,7 @@ function Lesson() {
           >
             <h4>{lesson.title}</h4>
             <p>{lesson.description}</p>
-            <button className="btn btn-primary" onClick={() => handleStartLesson(lesson.id)}>
+            <button className="btn btn-secondary" onClick={() => handleStartLesson(lesson.id)}>
               Start Lesson
             </button>
           </div>

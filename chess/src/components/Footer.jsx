@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer style={styles.footerLight}>
+    <div className="border-top border-dark shadow-sm">
+    <footer className='bg-indigo-100' style={styles.footerLight}>
       <ul style={styles.list}>
         <li><Link to="/about" style={styles.link}>About</Link></li>
         <li><Link to="/contact" style={styles.link}>Contact</Link></li>
@@ -12,12 +13,13 @@ const Footer = () => {
         <li><Link to="/privacy" style={styles.link}>Privacy</Link></li>
       </ul>
     </footer>
+    </div>
   );
 };
 
 const styles = {
   footerLight: {
-    backgroundColor: '#cfdef3',
+    
     padding: '10px 0',
     textAlign: 'center',
   },
