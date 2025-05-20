@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
     "bootstrap": "^5.3.6",
+    "chess": "file:",
     "chess.js": "^1.2.0",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
