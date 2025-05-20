@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import image4 from "../../assets/chess.jpg";
 const Home = () => {
   return (
-    
+    <>    <h1>haribabu</h1>
     <div className="min-h-screen w-full bg-black text-white font-sans pt-0.5">
       
       {/* Hero Section */}
@@ -79,6 +79,8 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
+
   );
 };
 
