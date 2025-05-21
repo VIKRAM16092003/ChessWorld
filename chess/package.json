@@ -14,6 +14,8 @@
     "bootstrap": "^5.3.6",
     "chess": "file:",
     "chess.js": "^1.2.0",
+    "chessboardjsx": "^2.4.7",
+    "framer-motion": "^12.12.1",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",

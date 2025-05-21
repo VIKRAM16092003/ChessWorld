@@ -172,7 +172,7 @@ function StartGame() {
   };
 
   return (
-    <div className={`start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
+    <div className={`bg-indigo-100 start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
       <div style={{ fontFamily: "sans-serif", padding: 20, display: "flex", justifyContent: "center" }}>
         <div style={{
           width: "100%", maxWidth: "1400px", background: isDarkMode ? "#1e1e1e" : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",

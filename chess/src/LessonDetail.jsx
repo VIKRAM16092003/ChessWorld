@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Chess } from "chess.js";
+import { Chessboard } from "react-chessboard";
 
 const lessons = [
   {
@@ -11,14 +14,7 @@ const lessons = [
       - Castle early to safeguard your king.
       - Avoid moving the same piece multiple times in the opening.
     `,
-  },
-  {
-    id: 2,
-    title: "Checkmates in One",
-    content: `
-      - Look for loose kings.
-      - Practice common patterns: back-rank mate, queen + support, and knight forks.
-    `,
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d4", "exd4", "cxd4", "Bb4+", "Nc3", "O-O"]
   },
   {
     id: 3,
@@ -27,8 +23,10 @@ const lessons = [
       - Forks: Using one piece to attack two.
       - Pins: A piece can’t move without exposing a higher-value piece or the king.
     `,
+    moves: ["e4", "e5", "Nf3", "Nc6", "d4", "exd4", "Nxd4", "Nf6", "Nc3", "Bb4", "e5", "Nxe5", "Qe2"]
   },
-  {id:4,
+  {
+    id: 4,
     title: "Opening Principles",
     content: `
       The opening is the first stage of a chess game. 
@@ -39,9 +37,10 @@ const lessons = [
       - Don’t bring out your queen too early
       - Castle early to safeguard your king
     `,
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Be7"]
   },
-    {id:5,
-
+  {
+    id: 5,
     title: "Middle Game Tactics",
     content: `
       The middle game begins once development is complete.
@@ -51,31 +50,10 @@ const lessons = [
       - Attacking weak pawns or king positions
       - Sacrifices to gain positional or tactical advantage
     `,
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "c3", "Nf6", "d4", "exd4", "cxd4", "Bb4+", "Nc3", "Nxe4"]
   },
-   {id:6,
-
-    title: "Endgame Strategies",
-    content: `
-      Endgames are where few pieces remain. Essential concepts:
-      - King activity is crucial: bring your king into the fight
-      - Master basic mates (king + queen/rook vs king)
-      - Understand opposition in king-pawn endings
-      - Use passed pawns effectively
-    `,
-  },
-    {id:7,
-
-    title: "Checkmate Patterns",
-    content: `
-      Learn and recognize common checkmate techniques:
-      - Back rank mate: rook/queen mates king trapped by its own pawns
-      - Smothered mate: knight mates king trapped by own pieces
-      - Anastasia's Mate, Arabian Mate, and more
-      Practicing these will help finish games more confidently.
-    `,
-  },
-   {id:8,
-
+  {
+    id: 8,
     title: "Pawn Structures",
     content: `
       Pawn structure defines the strategic landscape.
@@ -85,9 +63,10 @@ const lessons = [
       - Passed pawns are powerful in endgames
       - Pawn breaks can open lines or destroy the opponent's structure
     `,
+    moves: ["d4", "d5", "c4", "e6", "Nc3", "Nf6", "cxd5", "exd5", "Bg5"]
   },
-    {id:9,
-
+  {
+    id: 9,
     title: "Attacking the King",
     content: `
       A successful attack requires preparation and precision:
@@ -97,17 +76,46 @@ const lessons = [
       - Use sacrifices to open the king’s position
       Calculated aggression often leads to decisive victories.
     `,
-  },
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4", "O-O", "dxc3", "Qb3"]
+  }
 ];
 
 function LessonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const lesson = lessons.find((l) => l.id === parseInt(id));
+  const [fen, setFen] = useState("start");
+  const [chess] = useState(new Chess());
+
+  useEffect(() => {
+    if (!lesson) return;
+
+    chess.reset();
+
+    if (lesson.moves) {
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < lesson.moves.length) {
+          chess.move(lesson.moves[i]);
+          setFen(chess.fen());
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1500); 
+      return () => clearInterval(interval);
+    } else if (lesson.fen) {
+      chess.load(lesson.fen);
+      setFen(chess.fen());
+    } else {
+      chess.reset();
+      setFen(chess.fen());
+    }
+  }, [lesson, chess]);
 
   if (!lesson) {
     return (
-      <div style={{ padding: "2rem" }}>
+      <div className="bg-indigo-100 p-5">
         <h2>Lesson not found</h2>
         <button className="btn btn-outline-dark" onClick={() => navigate("/lesson")}>
           Back to Lessons
@@ -117,21 +125,66 @@ function LessonDetail() {
   }
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <motion.div
+      className="bg-indigo-100 p-5 min-h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <button className="btn btn-outline-dark mb-3" onClick={() => navigate("/lesson")}>
         ← Back to Lessons
       </button>
-      <h2>{lesson.title}</h2>
-      <pre style={{
-        whiteSpace: "pre-wrap",
-        background: "#f4f4f4",
-        padding: "1rem",
-        borderRadius: "8px",
-        marginTop: "1rem"
-      }}>
-        {lesson.content}
-      </pre>
-    </div>
+
+      <motion.h2 className="text-shadow-2xs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+        {lesson.title}
+      </motion.h2>
+
+      <div className="flex flex-col lg:flex-row mt-4 gap-6">
+        {/* Left content */}
+        
+        <motion.pre
+          className="text-secondary bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5"
+          style={{ whiteSpace: "pre-wrap" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        > <h3 className="text-dark font-bold">Content</h3>
+          {lesson.content}
+           {lesson.moves && lesson.moves.length > 0 && (
+  <div>
+    <h3 className="text-dark font-bold mb-3">Moves</h3>
+    <ol className="list-decimal list-inside">
+      {lesson.moves.map((move, index) => (
+        <li
+  key={index}
+  className="mb-2 p-2 border border-gray-300 rounded bg-white shadow-sm"
+>
+  {move}
+</li>
+
+      ))}
+    </ol>
+  </div>
+)}
+        </motion.pre>
+        
+        
+
+        {/* Right chessboard */}
+        <motion.div
+          className="lg:w-1/2 w-full flex justify-center items-start"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          
+          <div className="mb-5">
+            <h4 className="text-center pt-3 text-shadow-lg">Visual Movements</h4>
+            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={400} />
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
 

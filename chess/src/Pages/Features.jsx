@@ -31,7 +31,8 @@ function Features() {
             className="shadow-lg rounded-xl p-4 bg-white"
             style={{ width: "16rem", borderCollapse: "separate", borderSpacing: "0 1rem" }}
           >
-            <tbody>
+            <form>
+            
               <tr>
                 <td className="pb-4">
                   <img src={img} alt={alt} className="w-70 h-24 mx-auto rounded" />
@@ -40,7 +41,7 @@ function Features() {
               <tr>
                 <td className="text-center font-semibold text-lg">{title}</td>
               </tr>
-            </tbody>
+              </form>
           </table>
         ))}
       </div>
