@@ -6,10 +6,11 @@ const Navbar = () => {
     <nav className="bg-black text-white px-6 py-4 shadow-md ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img src={logo} alt="Company Logo" className="w-10 h-10 rounded-full object-cover" />
-          <span className="text-xl font-semibold">ChessWorld</span>
-        </Link>
+       <Link to="/" className="flex items-center space-x-2 no-underline">
+  <img src={logo} alt="Company Logo" className="w-15 h-15 rounded-full object-cover" />
+  <h1 className="text-white">Chess World</h1>
+</Link>
+
 
         {/* Nav Links */}
         <div className="flex items-center space-x-6">

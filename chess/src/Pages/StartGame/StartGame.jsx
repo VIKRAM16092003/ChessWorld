@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
+import { useLocation, useNavigate } from "react-router-dom"; // <-- Added useNavigate
 import "./StartGame.css";
-import { useLocation } from "react-router-dom";
 
 function StartGame() {
   const location = useLocation();
+  const navigate = useNavigate(); // <-- Initialize navigate
   const timer = location.state?.timer || 600;
 
   const [game, setGame] = useState(new Chess());
@@ -94,7 +95,8 @@ function StartGame() {
       result ||
       whiteTime === 0 ||
       blackTime === 0
-    ) return false;
+    )
+      return false;
 
     const piece = game.get(source);
     if (!piece) return false;
@@ -181,10 +183,26 @@ function StartGame() {
           {/* Navigation */}
           <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: 20, flexWrap: "wrap", gap: "10px" }}>
             {["Play", "Puzzles", "Lessons", "Analysis", "Dark Mode"].map((btn) => (
-              <button key={btn} className="btn btn-outline-dark" onClick={
-                btn === "Play" ? startGame :
-                  btn === "Dark Mode" ? () => setIsDarkMode((prev) => !prev) : undefined
-              } disabled={btn === "Play" && isGameStarted}>
+              <button
+                key={btn}
+                className="btn btn-outline-dark"
+                onClick={
+                  btn === "Play"
+                    ? startGame
+                    : btn === "Dark Mode"
+                    ? () => setIsDarkMode((prev) => !prev)
+                    : () => {
+                        const routeMap = {
+                          Puzzles: "/puzzle",
+                          Lessons: "/lesson",
+                          Analysis: "/analyse",
+                        };
+                        const route = routeMap[btn];
+                        if (route) navigate(route);
+                      }
+                }
+                disabled={btn === "Play" && isGameStarted}
+              >
                 {btn}
               </button>
             ))}
