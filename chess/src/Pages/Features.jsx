@@ -5,49 +5,66 @@ import opening from "../assets/recommender.jpeg";
 import tracker from "../assets/tracker1.png";
 
 function Features() {
+  const features = [
+    {
+      img: report,
+      alt: "Report",
+      ref:"Progress",
+      title: "Personalized Reports",
+      desc: "Get detailed game analysis and insights to improve your play."
+    },
+    {
+      img: puzzle,
+      alt: "Puzzles",
+      ref:"Puzzle",
+      title: "Suggested Puzzles",
+      desc: "Practice with curated chess puzzles tailored for your skill level."
+    },
+    {
+      img: opening,
+      alt: "Opening",
+      ref:"Reminder",
+      title: "Recommender",
+      desc: "Receive opening strategies suggestions based on your games."
+    },
+    {
+      img: tracker,
+      alt: "Tracker",
+      ref:"Tracker",
+      title: "Progress Tracker",
+      desc: "Monitor your improvement over time with intuitive charts."
+    }
+  ];
+
   return (
-    <section className="text-center px-4 py-12 text-black">
-      <div className="ml-[95%] mt-[-3%]">
+    <section className="text-center px-6 py-12 text-black bg-gray-50 min-h-screen">
+      <div className="flex justify-end mb-8 mt-[-35px]">
         <Link to="/">
-          <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition mt-[50px]">
+          <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition">
             Back
           </button>
         </Link>
       </div>
 
-      <h2 className="bg-black text-white rounded">
+      <h2 className="bg-black text-white rounded inline-block mb-12 w-[15%] font-bold">
         FEATURES
       </h2>
 
-      <div className="flex justify-center gap-8 flex-wrap">
-        {[ 
-          { img: report, alt: "Report", title: "Personalized Reports" },
-          { img: puzzle, alt: "Puzzles", title: "Suggested Puzzles" },
-          { img: opening, alt: "Opening", title: "Recommender" },
-          { img: tracker, alt: "Tracker", title: "Progress Tracker" }
-        ].map(({ img, alt, title }, index) => (
-          <table
-            key={index}
-            className="shadow-lg rounded-xl p-4 bg-white"
-            style={{ width: "16rem", borderCollapse: "separate", borderSpacing: "0 1rem" }}
+      <div className="flex flex-wrap justify-center gap-10 ">
+        {features.map(({ ref,alt, title, desc }, idx) => (
+          <Link to={`/${ref}`} style={{ textDecoration: "none" }}>
+          <div
+            key={idx}
+            className="bg-white rounded-xl shadow-lg p-6 w-72 flex flex-col items-center hover:shadow-xl hover:scale-105 transform transition duration-300"
           >
-            <form>
-            
-              <tr>
-                <td className="pb-4">
-                  <img src={img} alt={alt} className="w-70 h-24 mx-auto rounded" />
-                </td>
-              </tr>
-              <tr>
-                <td className="text-center font-semibold text-lg">{title}</td>
-              </tr>
-              </form>
-          </table>
+            <h3 className="text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-gray-700 text-center">{desc}</p>
+          </div>
+          </Link>
         ))}
       </div>
     </section>
   );
-
 }
 
 export default Features;

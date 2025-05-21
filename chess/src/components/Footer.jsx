@@ -33,7 +33,7 @@ const styles = {
   },
   link: {
     textDecoration: 'none',
-    color: '#000',  // black text always
+    color: '#000',
     fontWeight: '500',
   },
 };

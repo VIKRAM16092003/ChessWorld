@@ -19,7 +19,7 @@ export const PremiumPlan = () => (
     </div><br/>
 
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white">PREMIUM PLAN</h2>
+      <center><h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white w-[240px]">PREMIUM PLAN</h2></center>
       <p className="text-center text-lg mb-10 max-w-2xl mx-auto text-gray-600">
         Perfect for competitive players seeking maximum insight, tools, and support.
       </p>

@@ -2,9 +2,8 @@
 import chesshomeimg from "../../assets/chess.jpg";
 const Home = () => {
   return (
-    <div className="min-h-screen w-[100vw]  h-[100vh] bg-[#EFEEEA]  flex felex-row font-sans pt-0.5">
+    <div className="min-h-screen w-[100%]  h-[100vh] bg-[#EFEEEA]  flex felex-row font-sans pt-0.5">
       <section className="flex flex-col md:flex-row bg-white/10 w-[90%] h-[80vh] md:w-[70%] mx-auto mt-10 border-[0px] border-gray-500 rounded-2xl px-6 py-10 items-center justify-evenly space-y-8 md:space-y-0">
-        {/* Text */}
         <div className=" ml-[-51px] text-grey font-[600] mr-3">
           <h1 className="text-[90px] w-[450px] h-[150px] font-bold  leading-tight  mb-3 pr-2">
             PLAY SMARTER <br /> LEARN FASTER
@@ -18,10 +17,8 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Divider */}
         <div className="hidden md:block w-[2px] h-[500px] bg-gray-400 mx-6"></div>
 
-        {/* Image */}
         <div className="md:w-1/2 flex justify-center">
           <img
             src={chesshomeimg}

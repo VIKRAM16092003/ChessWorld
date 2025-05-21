@@ -17,7 +17,7 @@ export const FreePlan = () => (
     <br/>
 
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white">FREE PLAN</h2>
+      <center><h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white w-[170px]">FREE PLAN</h2></center>
       <p className="text-center text-lg mb-10 max-w-2xl mx-auto text-black/60">
         Ideal for casual players looking to enjoy the game and get started with basic tools.
       </p>

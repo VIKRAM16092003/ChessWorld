@@ -20,7 +20,7 @@ export const BasicPlan = () => (
     <br/>
 
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white">BASIC PLAN</h2>
+      <center><h2 className="text-4xl font-extrabold text-center mb-4 bg-black rounded text-white w-[200px]">BASIC PLAN</h2></center>
       <p className="text-center text-lg mb-10 max-w-2xl mx-auto text-black/60">
         Designed for improving players who want deeper insights and structured progress without breaking the bank.
       </p>
