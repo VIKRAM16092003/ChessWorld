@@ -49,7 +49,7 @@ function Lesson() {
           >
             <h4 className="text-shadow-md">{lesson.title}</h4>
             <p>{lesson.description}</p>
-             <button className="btn btn-outline-dark " onClick={() => handleStartLesson(lesson.id)}>
+             <button className="btn btn-blue " onClick={() => handleStartLesson(lesson.id)}>
               Start Lesson
             </button>
           </div>

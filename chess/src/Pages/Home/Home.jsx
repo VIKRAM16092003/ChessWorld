@@ -23,7 +23,7 @@ const Home = () => {
           <img
             src={chesshomeimg}
             alt="Chess Analysis"
-            className="shadow-md ml-[110px] max-w-full h-[450px] w-[500px]  h-auto"
+            className="shadow-md ml-[110px] max-w-full w-[500px]  h-auto"
           />
         </div>
       </section>

@@ -179,8 +179,8 @@ function LessonDetail() {
         >
           
           <div className="mb-5">
-            <h4 className="text-center pt-3 text-shadow-lg">Visual Movements</h4>
-            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={400} />
+            <h1 className="text-center pt-3 text-shadow-lg">Visual Movements</h1>
+            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={600} />
           </div>
         </motion.div>
       </div>

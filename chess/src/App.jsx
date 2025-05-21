@@ -10,7 +10,6 @@ import Contact from './Pages/Contact';
 import { FreePlan } from './Pages/FreePlan';
 import { BasicPlan } from './Pages/BasicPlan';
 import { PremiumPlan } from './Pages/PremiumPlan';
-import Puzzle from './Puzzle';
 import Analyse from './Analyse';
 import  Lesson  from './Lesson';
 import LessonDetail from './LessonDetail';
@@ -22,6 +21,7 @@ import Features from './Pages/Features';
 import Blog from './Blog'
 import Terms from './Terms'
 import Privacy from './Privacy'
+import Puzzles from './Pages/Puzzles';
 
 const App = () => {
   return (
@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/freePlan" element={<FreePlan/>}/>
         <Route path="/basicPlan" element={<BasicPlan/>}/>
         <Route path="/premiumPlan" element={<PremiumPlan/>}/>
-        <Route path="/puzzle" element={<Puzzle/>}/>
+        <Route path="/puzzles" element={<Puzzles/>}/>
         <Route path="/analyse" element={<Analyse/>}/>
         <Route path="/lesson" element={<Lesson/>}/>
         <Route path="/lesson/:id" element={<LessonDetail />} />

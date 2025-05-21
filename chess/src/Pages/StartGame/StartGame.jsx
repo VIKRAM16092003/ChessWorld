@@ -193,7 +193,7 @@ function StartGame() {
                     ? () => setIsDarkMode((prev) => !prev)
                     : () => {
                         const routeMap = {
-                          Puzzles: "/puzzle",
+                          Puzzles: "/puzzles",
                           Lessons: "/lesson",
                           Analysis: "/analyse",
                         };
