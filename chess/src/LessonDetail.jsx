@@ -141,17 +141,18 @@ function LessonDetail() {
 
       <div className="flex flex-col lg:flex-row mt-4 gap-6">
         {/* Left content */}
+        
         <motion.pre
-          className="bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5"
+          className="text-secondary bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5"
           style={{ whiteSpace: "pre-wrap" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-        >
+        > <h3 className="text-dark font-bold">Content</h3>
           {lesson.content}
            {lesson.moves && lesson.moves.length > 0 && (
   <div>
-    <h3 className="font-semibold mb-3">Moves</h3>
+    <h3 className="text-dark font-bold mb-3">Moves</h3>
     <ol className="list-decimal list-inside">
       {lesson.moves.map((move, index) => (
         <li

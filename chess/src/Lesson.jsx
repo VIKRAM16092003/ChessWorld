@@ -44,13 +44,12 @@ function Lesson() {
               borderRadius: "12px",
               padding: "20px",
               width: "300px",
-              background: "#fff",
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
             }}
           >
             <h4 className="text-shadow-md">{lesson.title}</h4>
             <p>{lesson.description}</p>
-             <button className="btn btn-secondary" onClick={() => handleStartLesson(lesson.id)}>
+             <button className="btn btn-outline-dark " onClick={() => handleStartLesson(lesson.id)}>
               Start Lesson
             </button>
           </div>
