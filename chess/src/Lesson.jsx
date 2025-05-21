@@ -9,19 +9,12 @@ const lessons = [
     description: "Learn how to control the center, develop your pieces, and protect your king.",
   },
   {
-    id: 2,
-    title: "Checkmates in One",
-    description: "Identify positions where you can checkmate in a single move.",
-  },
-  {
     id: 3,
     title: "Forks and Pins",
     description: "Understand key tactical ideas to win material using forks and pins.",
   },
   { id: 4, title: "Opening Principles", description: "Learn the fundamentals of chess openings." },
   { id: 5, title: "Middle Game Tactics", description: "Improve your tactical skills in the middle game." },
-  { id: 6, title: "Endgame Strategies", description: "Master the essential endgame techniques." },
-  { id: 7, title: "Checkmate Patterns", description: "Common patterns to finish the game effectively." },
   { id: 8, title: "Pawn Structures", description: "Understand how pawn formations impact the game." },
   { id: 9, title: "Attacking the King", description: "Learn how to launch a successful attack." },
 ];
@@ -35,7 +28,7 @@ function Lesson() {
   };
 
   return (
-    <div className="lesson-page bg-indigo-100" style={{ padding: "2rem" }}>
+    <div className="lesson-page bg-indigo-100" style={{ padding: "3rem" }}>
       <div className="mx-5"><p className="h2 fw-bold text-shadow-lg py-2 mx-5" style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</p></div>
       <div className="ms-5">
       <div className="lesson-grid ms-5" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "start" }}>
