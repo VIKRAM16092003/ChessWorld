@@ -131,40 +131,36 @@ function LessonDetail() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <button className="btn btn-outline-dark mb-3" onClick={() => navigate("/lesson")}>
+      <button className="btn btn-dark mb-3" onClick={() => navigate("/lesson")}>
         ← Back to Lessons
       </button>
 
-      <motion.h2 className="text-shadow-2xs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+      <motion.h2 className="fw-bold text-shadow-lg mt-4 " initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
         {lesson.title}
       </motion.h2>
 
-      <div className="flex flex-col lg:flex-row mt-4 gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* Left content */}
         
         <motion.pre
-          className="text-secondary bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5"
+          className="shadow-2xl fw-bold text-success my-5 bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5 "
           style={{ whiteSpace: "pre-wrap" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-        > <h3 className="text-dark font-bold">Content</h3>
+        > <h3 className="text-danger fw-bold text-shadow-lg ">CONTENT</h3>
           {lesson.content}
            {lesson.moves && lesson.moves.length > 0 && (
   <div>
-    <h3 className="text-dark font-bold mb-3">Moves</h3>
-    <ol className="list-decimal list-inside">
-      {lesson.moves.map((move, index) => (
-        <li
-  key={index}
-  className="mb-2 p-2 border border-gray-300 rounded bg-white shadow-sm"
->
-  {move}
-</li>
-
-      ))}
-    </ol>
-  </div>
+  <h3 className="text-danger fw-bold text-shadow-lg mb-3">MOVES</h3>
+  <ol className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 list-decimal list-inside">
+    {lesson.moves.map((move, index) => (
+      <li key={index}>
+        {move}
+      </li>
+    ))}
+  </ol>
+</div>
 )}
         </motion.pre>
         
@@ -179,8 +175,8 @@ function LessonDetail() {
         >
           
           <div className="mb-5">
-            <h1 className="text-center pt-3 text-shadow-lg">Visual Movements</h1>
-            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={600} />
+            <h1 className="fw-bold text-danger text-center pt-3 text-shadow-lg">Visual Movements</h1>
+            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={600} customBoardStyle={{borderRadius: "4px",boxShadow: "0 2px 10px rgba(0,0,0,0.3)",}} />
           </div>
         </motion.div>
       </div>

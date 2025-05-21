@@ -29,6 +29,9 @@ function Lesson() {
 
   return (
     <div className="lesson-page bg-indigo-100" style={{ padding: "3rem" }}>
+      <button className="btn btn-dark mb-3" onClick={() => navigate("/play")}>
+        ← Back to play
+      </button>
       <div className="mx-5"><p className="h2 fw-bold text-shadow-lg py-2 mx-5" style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</p></div>
       <div className="ms-5">
       <div className="lesson-grid ms-5" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "start" }}>
@@ -49,7 +52,7 @@ function Lesson() {
           >
             <h4 className="text-shadow-md">{lesson.title}</h4>
             <p>{lesson.description}</p>
-             <button className="btn btn-blue " onClick={() => handleStartLesson(lesson.id)}>
+             <button className="btn btn-primary " onClick={() => handleStartLesson(lesson.id)}>
               Start Lesson
             </button>
           </div>
