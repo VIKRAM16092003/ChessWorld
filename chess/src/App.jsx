@@ -22,6 +22,7 @@ import Features from './Pages/Features';
 import Blog from './Blog'
 import Terms from './Terms'
 import Privacy from './Privacy'
+import Testimonials from './Testimonials'
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
         <Route path="/blog" element={<Blog/>}/>
+        <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
         <Route path="/play" element={<StartGame/>}/>
          <Route path="/about" element={<About/>}/>
