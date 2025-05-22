@@ -6,7 +6,7 @@ function Pricing() {
   return (
     <section className="min-h-screen bg-indigo-100 from-gray-100 via-white to-gray-200 py-4 px-6 text-black">
       <button className="btn btn-dark" onClick={() => navigate("/")}>
-           ←  Back to Home
+           ←  Back to home
         </button>
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="fw-bold text-shadow-lg text-5xl font-extrabold mb-6 text-gray-800">Pricing Plans</h2>
