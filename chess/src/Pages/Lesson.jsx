@@ -38,7 +38,7 @@ function Lesson() {
         </button>
 
         {/* Header */}
-        <h2 className="mb-4 text-4xl font-extrabold text-center text-indigo-800 mb-12 drop-shadow-md">
+        <h2 className="mb-4 text-4xl font-extrabold text-center text-indigo-800 drop-shadow-md">
           ♟️ Chess Lessons
         </h2>
 

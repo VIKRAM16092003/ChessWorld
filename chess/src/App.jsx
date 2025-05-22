@@ -1,6 +1,6 @@
 import React from 'react'
 import StartGame from './Pages/StartGame/StartGame'
-import About from './About'
+import About from './Pages/About'
 import {Route, Routes} from "react-router-dom";
 import Home from './Pages/Home/Home';
 import { Toaster } from 'sonner'
@@ -11,16 +11,16 @@ import { FreePlan } from './Pages/FreePlan';
 import { BasicPlan } from './Pages/BasicPlan';
 import { PremiumPlan } from './Pages/PremiumPlan';
 import Analyse from './Analyse';
-import  Lesson  from './Lesson';
-import LessonDetail from './LessonDetail';
+import  Lesson  from './Pages/Lesson';
+import LessonDetail from './Pages/LessonDetail';
 import Reminder from './Reminder';
 import Progress from './Progress';
 import Tracker from './Tracker';
-import Pricing from './PricingPlan';
+import Pricing from './Pages/PricingPlan';
 import Features from './Pages/Features';
-import Blog from './Blog'
-import Terms from './Terms'
-import Privacy from './Privacy'
+import Blog from './Pages/Blog'
+import Terms from './Pages/Terms'
+import Privacy from './Pages/Privacy'
 import Puzzles from './Pages/Puzzles';
 
 const App = () => {
