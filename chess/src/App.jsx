@@ -10,12 +10,12 @@ import Contact from './Pages/Contact';
 import { FreePlan } from './Pages/FreePlan';
 import { BasicPlan } from './Pages/BasicPlan';
 import { PremiumPlan } from './Pages/PremiumPlan';
-import Analyse from './Analyse';
+import Analyse from './Pages/Analyse';
 import  Lesson  from './Pages/Lesson';
 import LessonDetail from './Pages/LessonDetail';
-import Reminder from './Reminder';
-import Progress from './Progress';
-import Tracker from './Tracker';
+import Reminder from './Pages/Reminder';
+import Progress from './Pages/Progress';
+import Tracker from './Pages/Tracker';
 import Pricing from './Pages/PricingPlan';
 import Features from './Pages/Features';
 import Blog from './Pages/Blog'
