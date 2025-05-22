@@ -1,6 +1,6 @@
 import React from 'react'
 import StartGame from './Pages/StartGame/StartGame'
-import About from './About'
+import About from './Pages/About'
 import {Route, Routes} from "react-router-dom";
 import Home from './Pages/Home/Home';
 import { Toaster } from 'sonner'
@@ -10,18 +10,18 @@ import Contact from './Pages/Contact';
 import { FreePlan } from './Pages/FreePlan';
 import { BasicPlan } from './Pages/BasicPlan';
 import { PremiumPlan } from './Pages/PremiumPlan';
-import Puzzle from './Puzzle';
-import Analyse from './Analyse';
-import  Lesson  from './Lesson';
-import LessonDetail from './LessonDetail';
-import Reminder from './Reminder';
-import Progress from './Progress';
-import Tracker from './Tracker';
+import Analyse from './Pages/Analyse';
+import  Lesson  from './Pages/Lesson';
+import LessonDetail from './Pages/LessonDetail';
+import Reminder from './Pages/Reminder';
+import Progress from './Pages/Progress';
+import Tracker from './Pages/Tracker';
 import Pricing from './PricingPlan';
 import Features from './Pages/Features';
-import Blog from './Blog'
-import Terms from './Terms'
-import Privacy from './Privacy'
+import Blog from './Pages/Blog'
+import Puzzles from './Pages/Puzzles'
+import Terms from './Pages/Terms'
+import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 
 const App = () => {
@@ -42,7 +42,7 @@ const App = () => {
         <Route path="/freePlan" element={<FreePlan/>}/>
         <Route path="/basicPlan" element={<BasicPlan/>}/>
         <Route path="/premiumPlan" element={<PremiumPlan/>}/>
-        <Route path="/puzzle" element={<Puzzle/>}/>
+        <Route path="/puzzles" element={<Puzzles/>}/>
         <Route path="/analyse" element={<Analyse/>}/>
         <Route path="/lesson" element={<Lesson/>}/>
         <Route path="/lesson/:id" element={<LessonDetail />} />

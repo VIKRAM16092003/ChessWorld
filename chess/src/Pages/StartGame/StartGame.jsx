@@ -172,7 +172,11 @@ function StartGame() {
   };
 
   return (
+    <div className="p-5 bg-blue-100" ><button className="btn btn-dark mb-3" onClick={() => navigate("/")}>
+        ← Back to Home
+      </button>
     <div className={`bg-indigo-100 start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
+      
       <div style={{ fontFamily: "sans-serif", padding: 20, display: "flex", justifyContent: "center" }}>
         <div style={{
           width: "100%", maxWidth: "1400px", background: isDarkMode ? "#1e1e1e" : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
@@ -185,7 +189,7 @@ function StartGame() {
             {["Play", "Puzzles", "Lessons", "Analysis", "Dark Mode"].map((btn) => (
               <button
                 key={btn}
-                className="btn btn-outline-dark"
+                className="btn btn-secondary"
                 onClick={
                   btn === "Play"
                     ? startGame
@@ -193,7 +197,7 @@ function StartGame() {
                     ? () => setIsDarkMode((prev) => !prev)
                     : () => {
                         const routeMap = {
-                          Puzzles: "/puzzle",
+                          Puzzles: "/puzzles",
                           Lessons: "/lesson",
                           Analysis: "/analyse",
                         };
@@ -347,6 +351,7 @@ function StartGame() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
