@@ -80,6 +80,7 @@ const lessons = [
   }
 ];
 
+
 function LessonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -89,7 +90,6 @@ function LessonDetail() {
 
   useEffect(() => {
     if (!lesson) return;
-
     chess.reset();
 
     if (lesson.moves) {
@@ -102,7 +102,7 @@ function LessonDetail() {
         } else {
           clearInterval(interval);
         }
-      }, 1500); 
+      }, 1500);
       return () => clearInterval(interval);
     } else if (lesson.fen) {
       chess.load(lesson.fen);
@@ -115,72 +115,162 @@ function LessonDetail() {
 
   if (!lesson) {
     return (
-      <div className="bg-indigo-100 p-5">
-        <h2>Lesson not found</h2>
-        <button className="btn btn-outline-dark" onClick={() => navigate("/lesson")}>
-          Back to Lessons
+      <div className="lesson-container ">
+        <h2 className="not-found-title">Lesson not found</h2>
+        <button className="back-button" onClick={() => navigate("/lesson")}>
+          ← Back to Lessons
         </button>
       </div>
     );
   }
 
   return (
-    <motion.div
-      className="bg-indigo-100 p-5 min-h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <button className="btn btn-dark mb-3" onClick={() => navigate("/lesson")}>
-        ← Back to Lessons
-      </button>
+    <>
+      <style>
+        {`
+          .lesson-container {
+            background-color: #eef2ff;
+            padding: 2rem;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
 
-      <motion.h2 className="fw-bold text-shadow-lg mt-4 " initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-        {lesson.title}
-      </motion.h2>
+          .lesson-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px #ccc;
+          }
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left content */}
-        
-        <motion.pre
-          className="shadow-2xl fw-bold text-success my-5 bg-gray-100 p-4 rounded-lg lg:w-1/2 w-full h5 "
-          style={{ whiteSpace: "pre-wrap" }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        > <h3 className="text-danger fw-bold text-shadow-lg ">CONTENT</h3>
-          {lesson.content}
-           {lesson.moves && lesson.moves.length > 0 && (
-  <div>
-  <h3 className="text-danger fw-bold text-shadow-lg mb-3">MOVES</h3>
-  <ol className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 list-decimal list-inside">
-    {lesson.moves.map((move, index) => (
-      <li key={index}>
-        {move}
-      </li>
-    ))}
-  </ol>
-</div>
-)}
-        </motion.pre>
-        
-        
+          .lesson-content {
+            background-color: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #065f46;
+            font-size: 1rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+          }
 
-        {/* Right chessboard */}
-        <motion.div
-          className="lg:w-1/2 w-full flex justify-center items-start"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
+          .lesson-content h3 {
+            font-size: 1.2rem;
+            color: #dc2626;
+            margin-bottom: 0.75rem;
+            text-shadow: 1px 1px 2px #f5d0d0;
+          }
+
+          .moves-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.5rem;
+            list-style: decimal inside;
+          }
+
+          .moves-list li {
+            background-color: #f3f4f6;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+          }
+
+          .moves-list li:hover {
+            background-color: #e0e7ff;
+            cursor: default;
+          }
+
+          .chessboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 2rem;
+            padding: 1rem;
+          }
+
+          .chessboard-title {
+            color: #dc2626;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px #fcd5ce;
+          }
+
           
-          <div className="mb-5">
-            <h1 className="fw-bold text-danger text-center pt-3 text-shadow-lg">Visual Movements</h1>
-            <Chessboard position={fen} arePiecesDraggable={false} boardWidth={600} customBoardStyle={{borderRadius: "4px",boxShadow: "0 2px 10px rgba(0,0,0,0.3)",}} />
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
+
+          .not-found-title {
+            font-size: 1.5rem;
+            color: #dc2626;
+            margin-bottom: 1rem;
+          }
+        `}
+      </style>
+
+      <motion.div
+        className="lesson-container pt-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <button className="btn btn-dark" onClick={() => navigate("/lesson")}>
+          ← Back to Lessons
+        </button>
+
+        <motion.h2
+          className="lesson-title"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          {lesson.title}
+        </motion.h2>
+
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Left content */}
+          <motion.pre
+            className="lesson-content lg:w-1/2 w-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <h3>CONTENT</h3>
+            {lesson.content}
+
+            {lesson.moves && lesson.moves.length > 0 && (
+              <>
+                <h3>MOVES</h3>
+                <ol className="moves-list">
+                  {lesson.moves.map((move, index) => (
+                    <li key={index}>{move}</li>
+                  ))}
+                </ol>
+              </>
+            )}
+          </motion.pre>
+
+          {/* Right chessboard */}
+          <motion.div
+            className="chessboard-container lg:w-1/2 w-full"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <div>
+              <h1 className="chessboard-title">Visual Movements</h1>
+              <Chessboard
+                position={fen}
+                arePiecesDraggable={false}
+                boardWidth={600}
+                customBoardStyle={{
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+                }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </>
   );
 }
 

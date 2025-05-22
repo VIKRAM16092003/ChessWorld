@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import "./Lesson.css"; // optional for styling
+import { FaArrowLeft } from "react-icons/fa";
 
 const lessons = [
   {
@@ -23,44 +23,45 @@ function Lesson() {
   const navigate = useNavigate();
 
   const handleStartLesson = (lessonId) => {
-    // For now, this could navigate to a static lesson page or open a modal
     navigate(`/lesson/${lessonId}`);
   };
 
   return (
-    <div className="lesson-page bg-indigo-100" style={{ padding: "3rem" }}>
-      <button className="btn btn-dark mb-3" onClick={() => navigate("/play")}>
-        ← Back to play
-      </button>
-      <div className="mx-5"><p className="h2 fw-bold text-shadow-lg py-2 mx-5" style={{ textAlign: "center", marginBottom: "2rem" }}>Chess Lessons</p></div>
-      <div className="ms-5">
-      <div className="lesson-grid ms-5" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "start" }}>
-        {lessons.map((lesson) => (
-          <div
-            key={lesson.id}
-            className="lesson-card"
-            style={{
-              display: "flex",               // Flex container
-              flexDirection: "column",       // Stack content vertically
-              justifyContent: "space-between", // Push button to bottom
-              border: "1px solid #ccc",
-              borderRadius: "12px",
-              padding: "20px",
-              width: "300px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
-            }}
-          >
-            <h4 className="text-shadow-md">{lesson.title}</h4>
-            <p>{lesson.description}</p>
-             <button className="btn btn-primary " onClick={() => handleStartLesson(lesson.id)}>
-              Start Lesson
-            </button>
-          </div>
-          
-          
-        ))}
-       
-      </div>
+    <div className="bg-gradient-to-br from-indigo-100 via-white to-indigo-200 min-h-screen px-6 py-5">
+      <div className="max-w-7xl mx-3 ">
+        {/* Back Button */}
+        <button
+          className="btn flex items-center gap-2 text-white btn-dark"
+          onClick={() => navigate("/play")}
+        >
+           ← Back to Play
+        </button>
+
+        {/* Header */}
+        <h2 className="mb-4 text-4xl font-extrabold text-center text-indigo-800 mb-12 drop-shadow-md">
+          ♟️ Chess Lessons
+        </h2>
+
+        {/* Lesson Cards Grid */}
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {lessons.map((lesson) => (
+            <div
+              key={lesson.id}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between border border-gray-200"
+            >
+              <div>
+                <h3 className="text-xl font-semibold text-indigo-700 mb-2">{lesson.title}</h3>
+                <p className="text-gray-600">{lesson.description}</p>
+              </div>
+              <button
+                onClick={() => handleStartLesson(lesson.id)}
+                className="mt-6 bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+              >
+                Start Lesson
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
