@@ -16,12 +16,13 @@ import LessonDetail from './Pages/LessonDetail';
 import Reminder from './Pages/Reminder';
 import Progress from './Pages/Progress';
 import Tracker from './Pages/Tracker';
-import Pricing from './Pages/PricingPlan';
+import Pricing from './PricingPlan';
 import Features from './Pages/Features';
 import Blog from './Pages/Blog'
+import Puzzles from './Pages/Puzzles'
 import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
-import Puzzles from './Pages/Puzzles';
+import Testimonials from './Testimonials'
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
         <Route path="/blog" element={<Blog/>}/>
+        <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
         <Route path="/play" element={<StartGame/>}/>
          <Route path="/about" element={<About/>}/>
