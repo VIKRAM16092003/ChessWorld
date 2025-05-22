@@ -117,6 +117,12 @@ const PuzzleBoard = () => {
           boardWidth={400}
           animationDuration={300}
           customSquareStyles={squareStyles}
+          customDarkSquareStyle={{
+    backgroundColor: "#C0C0C0", // Silver
+  }}
+  customLightSquareStyle={{
+    backgroundColor: "#ffffff", // White
+  }}
         />
       </div>
       <div className={styles.sidebar}>

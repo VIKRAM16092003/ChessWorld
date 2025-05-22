@@ -80,7 +80,6 @@ const lessons = [
   }
 ];
 
-
 function LessonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -91,7 +90,6 @@ function LessonDetail() {
   useEffect(() => {
     if (!lesson) return;
     chess.reset();
-
     if (lesson.moves) {
       let i = 0;
       const interval = setInterval(() => {
@@ -115,9 +113,9 @@ function LessonDetail() {
 
   if (!lesson) {
     return (
-      <div className="lesson-container ">
+      <div className="lesson-container">
         <h2 className="not-found-title">Lesson not found</h2>
-        <button className="back-button" onClick={() => navigate("/lesson")}>
+        <button className="btn" onClick={() => navigate("/lesson")}>
           ← Back to Lessons
         </button>
       </div>
@@ -129,144 +127,203 @@ function LessonDetail() {
       <style>
         {`
           .lesson-container {
-            background-color: #eef2ff;
+            background: linear-gradient(to right, #e0f7fa, #f1f5f9);
             padding: 2rem;
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           }
 
           .lesson-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px #ccc;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px #d1d5db;
           }
 
           .lesson-content {
-            background-color: #f9fafb;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            color: #065f46;
-            font-size: 1rem;
-            line-height: 1.6;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            color: #1e293b;
+            font-size: 1.1rem;
+            line-height: 1.75;
             white-space: pre-wrap;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
           }
 
           .lesson-content h3 {
-            font-size: 1.2rem;
-            color: #dc2626;
-            margin-bottom: 0.75rem;
-            text-shadow: 1px 1px 2px #f5d0d0;
+            font-size: 1.4rem;
+            color: #1d4ed8;
+            margin-bottom: 1rem;
           }
 
           .moves-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 0.5rem;
-            list-style: decimal inside;
+            margin-top: 1rem;
+            padding-left: 1rem;
           }
 
           .moves-list li {
-            background-color: #f3f4f6;
-            padding: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.4rem 0.75rem;
             border-radius: 0.5rem;
-            transition: background 0.3s;
+            font-weight: 500;
+            color: #0f172a;
+            transition: background 0.3s ease;
           }
 
           .moves-list li:hover {
-            background-color: #e0e7ff;
-            cursor: default;
+            background-color: #dbeafe;
           }
 
           .chessboard-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            padding: 2rem;
+            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            margin-top: 2rem;
-            padding: 1rem;
+            flex-direction: column;
+            align-items: center;
           }
 
           .chessboard-title {
-            color: #dc2626;
-            text-align: center;
-            font-size: 1.5rem;
+            color: #7c3aed;
+            font-size: 1.75rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px #fcd5ce;
+            text-shadow: 1px 1px 2px #e9d5ff;
           }
 
-          
+          .btn {
+            background-color: #1e293b;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            cursor: pointer;
+          }
 
-          .not-found-title {
-            font-size: 1.5rem;
-            color: #dc2626;
-            margin-bottom: 1rem;
+          .btn:hover {
+            background-color: #334155;
+            color:white;
+          }
+
+          .lesson-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+
+          @media (min-width: 1024px) {
+            .lesson-section {
+              flex-direction: row;
+              align-items: stretch;
+            }
+
+            .lesson-content,
+            .chessboard-container {
+              flex: 1;
+              height: 100%;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .lesson-content {
+              padding: 1.25rem;
+            }
+
+            .lesson-title {
+              font-size: 2rem;
+            }
+
+            .chessboard-title {
+              font-size: 1.5rem;
+            }
+
+            .moves-list {
+              font-size: 0.95rem;
+            }
           }
         `}
       </style>
 
       <motion.div
-        className="lesson-container pt-5"
+        className="lesson-container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <button className="btn btn-dark" onClick={() => navigate("/lesson")}>
+        <button className="btn mb-4" onClick={() => navigate("/lesson")}>
           ← Back to Lessons
         </button>
 
         <motion.h2
-          className="lesson-title"
+          className="lesson-title mb-5 pb-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
         >
           {lesson.title}
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left content */}
+        <div className="lesson-section">
           <motion.pre
-            className="lesson-content lg:w-1/2 w-full"
+            className="lesson-content"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5 }}
           >
-            <h3>CONTENT</h3>
+            <h3 className="fw-bold">CONTENT</h3>
             {lesson.content}
 
             {lesson.moves && lesson.moves.length > 0 && (
               <>
-                <h3>MOVES</h3>
-                <ol className="moves-list">
+                <h3 className="fw-bold">MOVES</h3>
+                <ol className="moves-list mb-5 pb-5">
                   {lesson.moves.map((move, index) => (
                     <li key={index}>{move}</li>
                   ))}
                 </ol>
               </>
             )}
+            <div className="mb-5"></div>
+            <div className="mb-5"></div>
+            
           </motion.pre>
 
-          {/* Right chessboard */}
           <motion.div
-            className="chessboard-container lg:w-1/2 w-full"
+            className="chessboard-container mx-5"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.7 }}
           >
-            <div>
-              <h1 className="chessboard-title">Visual Movements</h1>
-              <Chessboard
-                position={fen}
-                arePiecesDraggable={false}
-                boardWidth={600}
-                customBoardStyle={{
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-                }}
-              />
-            </div>
+            <h1 className="chessboard-title">Visual Movements</h1>
+            <Chessboard 
+              position={fen}
+              arePiecesDraggable={false}
+              boardWidth={600}
+              customBoardStyle={{
+                borderRadius: "10px",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.25)"
+              }}
+              customDarkSquareStyle={{
+                backgroundColor: "#C0C0C0"
+              }}
+              customLightSquareStyle={{
+                backgroundColor: "#f8fafc"
+              }}
+            />
           </motion.div>
         </div>
       </motion.div>
