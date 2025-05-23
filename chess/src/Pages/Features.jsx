@@ -1,67 +1,75 @@
 import { Link } from "react-router-dom";
-import report from "../assets/report2.jpg";
-import puzzle from "../assets/puzzle.jpg";
-import opening from "../assets/recommender.jpeg";
-import tracker from "../assets/tracker1.png";
+import chesshomeimg from "../assets/chessbgimg.jpg";
 
 function Features() {
   const features = [
     {
-      img: report,
-      alt: "Report",
-      ref:"Progress",
+      ref: "Progress",
       title: "Personalized Reports",
-      desc: "Get detailed game analysis and insights to improve your play."
+      desc: "Get detailed game analysis and insights to improve your play.",
     },
     {
-      img: puzzle,
-      alt: "Puzzles",
-      ref:"Puzzle",
+      ref: "SuggestedPuzzles",
       title: "Suggested Puzzles",
-      desc: "Practice with curated chess puzzles tailored for your skill level."
+      desc: "Practice with curated chess puzzles tailored for your skill level.",
     },
     {
-      img: opening,
-      alt: "Opening",
-      ref:"Reminder",
-      title: "Recommender",
-      desc: "Receive opening strategies suggestions based on your games."
+      ref: "Reminder",
+      title: "Opening Recommender",
+      desc: "Receive opening strategies suggestions based on your games.",
     },
     {
-      img: tracker,
-      alt: "Tracker",
-      ref:"Tracker",
+      ref: "Tracker",
       title: "Progress Tracker",
-      desc: "Monitor your improvement over time with intuitive charts."
-    }
+      desc: "Monitor your improvement over time with intuitive charts.",
+    },
   ];
 
   return (
-    <section className="text-center px-6 py-12 text-black bg-gray-50 min-h-screen">
-      <div className="flex justify-end mb-8 mt-[-35px]">
+    <section
+      className="min-h-screen py-12 px-6 text-black bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${chesshomeimg})`,
+        backgroundAttachment: "fixed", 
+      }}
+    >
+      {/* Back button */}
+      <div className="flex justify-start mb-10">
         <Link to="/">
-          <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition">
-            Back
-          </button>
+          <button className="bg-black/40 backdrop-blur-md text-white px-5 py-2 rounded w-[150px] hover:bg-black/60 transition">
+  ← Back
+</button>
+
         </Link>
       </div>
 
-      <h2 className="bg-black text-white rounded inline-block mb-12 w-[15%] font-bold">
-        FEATURES
-      </h2>
+      {/* Heading with horizontal lines */}
+      <div className="flex items-center justify-center mb-6">
+        <div className="flex-grow h-px bg-gray-300"></div>
+        <h2 className="mx-6 text-5xl font-extrabold text-white   px-6 py-1 rounded">
+          <strong>Features</strong>
+        </h2>
+        <div className="flex-grow h-px bg-gray-300"></div>
+      </div>
 
-      <div className="flex flex-wrap justify-center gap-10 ">
-        {features.map(({ ref,alt, title, desc }, idx) => (
-          <Link to={`/${ref}`} style={{ textDecoration: "none" }}>
-          <div
-            key={idx}
-            className="bg-white rounded-xl shadow-lg p-6 w-72 flex flex-col items-center hover:shadow-xl hover:scale-105 transform transition duration-300"
-          >
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-700 text-center">{desc}</p>
-          </div>
-          </Link>
-        ))}
+  
+
+      {/* Transparent Card Grid */}
+      <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+        {features.map(({ ref, title, desc }, idx) => (
+  <Link
+    to={`/${ref}`}
+    key={idx}
+    className="no-underline"
+    style={{ textDecoration: "none" }}
+  >
+    <div className="bg-white/30 backdrop-blur-md border border-gray-300 rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-h-[220px] flex flex-col justify-center items-center text-center">
+      <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
+      <p className="text-black/80 text-l">{desc}</p>
+    </div>
+  </Link>
+))}
+
       </div>
     </section>
   );

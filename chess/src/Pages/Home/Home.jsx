@@ -1,34 +1,83 @@
+import { Link } from "react-router-dom";
+import chesshomeimg from "../../assets/chesshomeimg.jpg";
+import chessbgimg from "../../assets/chessbgimg.jpg";
+import logo from "../../assets/logo.jpg";
 
-import chesshomeimg from "../../assets/chess.jpg";
 const Home = () => {
   return (
-    <div className="min-h-screen w-[100%]  h-[100vh] bg-[#EFEEEA]  flex felex-row font-sans pt-0.5">
-      <section className="flex flex-col md:flex-row bg-white/10 w-[90%] h-[80vh] md:w-[70%] mx-auto mt-10 border-[0px] border-gray-500 rounded-2xl px-6 py-10 items-center justify-evenly space-y-8 md:space-y-0">
-        <div className=" ml-[-51px] text-grey font-[600] mr-3">
-          <h1 className="text-[90px] w-[450px] h-[150px] font-bold  leading-tight  mb-3 pr-2">
-            PLAY SMARTER <br /> LEARN FASTER
-          </h1>
-          <p className="text-[16px] text-[#B6B09F] font-[500] font-sans mt-3 mb-3 ">
-            In this platform to enchance your skills, <br /> and improve your
-            focus !
-          </p>
-          <button className=" border-[2px] ml-[40px] mt-3   font-[700] px-6 py-2 text-[#FE5D26]  border-[#FE5D26] rounded hover:bg-[#FE5D26] hover:text-black ">
-            Get Free Game Analysis
-          </button>
+    <div
+      className="min-h-screen w-full bg-cover bg-center bg-[#EFEEEA] font-sans"
+      style={{ backgroundImage: `url(${chessbgimg})` }}
+    >
+      <div className="bg-[#5b646d]/30 w-full h-full py-[70px]">
+        <div className="w-[90%] mx-auto bg-[#dae2e6]/20 border rounded-2xl shadow-xl p-6 h-[80vh] flex flex-col">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6">
+            <Link
+              to="/"
+              className="flex items-center space-x-3 text-white font-semibold"
+            >
+              <img
+                src={logo}
+                alt="Company Logo"
+                className="w-20 h-20 rounded-full object-cover"
+              />
+              <span className="text-4xl font-bold">CHESS WORLD</span>
+            </Link>
+            <div className="flex space-x-4">
+              <Link
+  to="/pricing"
+  className="border-2 border-[white] text-white bg-transparent hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+  style={{ textDecoration: "none" }}
+>
+  Pricing
+</Link>
+
+              <Link
+                to="/about"
+                className="border-2 border-[white] text-white bg-transparent hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+                style={{ textDecoration: "none" }}
+              >
+                Start Free
+              </Link>
+            </div>
+          </div>
+
+          {/* Content Row */}
+          <div className="flex flex-col md:flex-row justify-between items-center flex-grow">
+            {/* Left Text */}
+            <div className="text-white max-w-md mb-10 md:mb-0 ml-4">
+              <h1 className="text-5xl font-bold leading-tight mb-4">
+                PLAY SMARTER <br /> LEARN FASTER
+              </h1>
+              <p className="text-lg font-medium mb-6">
+                Enhance your skills and improve your focus with this platform!
+              </p>
+              <div className="flex space-x-4">
+                <button className="border-2 border-[#FE5D26] text-[#FE5D26] bg-transparent hover:bg-[#FE5D26] hover:text-white font-bold px-5 py-2 rounded transition">
+                  Get Started
+                </button>
+                {/* Uncomment if you want to add a Features button */}
+                {/* <button className="border-2 border-[#FE5D26] text-[#FE5D26] bg-transparent hover:bg-[#FE5D26] hover:text-white font-bold px-6 py-2 rounded transition">
+                  Features
+                </button> */}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden md:block w-[2px] h-[300px] bg-gray-300 mx-8"></div>
+
+            {/* Right Image */}
+            <div className="flex justify-center">
+              <img
+                src={chesshomeimg}
+                alt="Chess Analysis"
+                className="w-[420px] h-[300px] object-cover rounded shadow-md"
+              />
+            </div>
+          </div>
         </div>
-
-        <div className="hidden md:block w-[2px] h-[500px] bg-gray-400 mx-6"></div>
-
-        <div className="md:w-1/2 flex justify-center">
-          <img
-            src={chesshomeimg}
-            alt="Chess Analysis"
-            className="shadow-md ml-[110px] max-w-full w-[500px]  h-auto"
-          />
-        </div>
-      </section>
-
-      
+      </div>
     </div>
   );
 };

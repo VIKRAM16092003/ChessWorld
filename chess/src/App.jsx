@@ -23,16 +23,18 @@ import Puzzles from './Pages/Puzzles'
 import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
+import SuggestedPuzzles from './Pages/SuggestedPuzzle';
 
 const App = () => {
   return (
     <div>
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <NavBar/>
+       {/* <NavBar/>  */}
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
+        <Route path="/SuggestedPuzzles" element={<SuggestedPuzzles/>}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
