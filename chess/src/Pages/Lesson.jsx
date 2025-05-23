@@ -39,6 +39,9 @@ function Lesson() {
         </button>
 
         {/* Header */}
+        <div className="ps-5 ms-5">
+          <div className="ps-5 ms-5">
+          <center>
         <h2 className="mb-4 text-4xl font-extrabold text-center text-indigo-800 drop-shadow-md">
           ♟️ Chess Lessons
         </h2>
@@ -63,6 +66,9 @@ function Lesson() {
             </div>
           ))}
         </div>
+        </center>
+        </div>
+      </div>
       </div>
     </div>
   );
