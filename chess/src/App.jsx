@@ -27,6 +27,9 @@ import SuggestedPuzzles from './Pages/SuggestedPuzzle';
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import RazorPay from "./Pages/RazorPay";
+import Round from "./Pages/RoundRobin";
+import Tournament from "./Pages/tournament";
+import Room from './Pages/WaitingRoom';
 
 const App = () => {
   return (
@@ -36,6 +39,7 @@ const App = () => {
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/room" element={<Room/>}/>
         <Route path="/pay" element={<RazorPay/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
@@ -58,6 +62,8 @@ const App = () => {
         <Route path="/progress" element={<Progress/>}/>
         <Route path="/tracker" element={<Tracker/>}/>
         <Route path="/pricing" element={<Pricing/>}/>
+        <Route path="/round" element={<Round/>}/>
+        <Route path="/tournament" element={<Tournament/>}/>
         <Route path="/features" element={<Features/>}/>
 
 
