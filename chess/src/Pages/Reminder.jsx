@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import reminderImg from "../assets/puzzle.jpg"; // Replace if needed
+import bgImage from "../assets/chessbgimg.jpg";
 
 const reminders = [
   {
@@ -41,41 +41,32 @@ const reminders = [
 
 const Opreminder = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-10 px-4 sm:px-6">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-2">Opening Reminder</h1>
-        <p className="text-md text-gray-600 font-medium">
-          Performance insights and personalized suggestions
-        </p>
-      </div>
+    <section
+      className="min-h-screen bg-cover bg-center py-12 px-4"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="max-w-5xl mx-auto bg-black/60 rounded-xl p-10 text-white shadow-xl">
+        <div className="text-center mb-10">
+          <h1 className="text-5xl font-bold mb-2 text-white">Opening Reminder</h1>
+          <p className="text-lg text-white/90">Performance insights and personalized suggestions</p>
+        </div>
 
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto">
-        {reminders.map(({ title, description }, index) => (
-          <div
-            key={index}
-            className="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row h-[180px]"
-          >
-            <div className="w-full sm:w-1/3 h-[180px]">
-              <img
-                src={reminderImg}
-                alt="Reminder Visual"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+        <div className="space-y-10">
+          {reminders.map(({ title, description }, index) => (
+            <div key={index}>
+              <h5 className="text-2xl font-semibold text-yellow-300 mb-1">{title}</h5>
+              <p className="text-white/90 text-base leading-relaxed">{description}</p>
             </div>
-            <div className="p-4 flex flex-col justify-center sm:w-2/3 text-left">
-              <h2 className="text-lg font-bold text-indigo-700 mb-1">{title}</h2>
-              <p className="text-sm text-gray-700 leading-snug">{description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="flex justify-center mt-10">
-        <Link to="/">
-          <button className="px-5 py-2 bg-red-700 hover:bg-red-600 text-white font-semibold rounded-md transition">
-            ← Back
-          </button>
-        </Link>
+        <div className="flex justify-center mt-12">
+          <Link to="/">
+            <button className="px-6 py-2 bg-white hover:bg-white text-black font-semibold rounded transition">
+              ← Back
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

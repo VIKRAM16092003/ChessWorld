@@ -24,6 +24,9 @@ import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import RazorPay from "./Pages/RazorPay";
 
 const App = () => {
   return (
@@ -33,7 +36,10 @@ const App = () => {
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/pay" element={<RazorPay/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
+        <Route path="/register" element={<Register/>}/>
         <Route path="/SuggestedPuzzles" element={<SuggestedPuzzles/>}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>

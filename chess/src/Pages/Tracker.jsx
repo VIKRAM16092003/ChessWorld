@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import bgImage from "../assets/bg.jpg"; // Replace with your image
+import bgImage from "../assets/chessbgimg.jpg";
 
 const Progress = () => {
   const reports = [
@@ -34,31 +34,26 @@ const Progress = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row">
-      {/* Left image side */}
-      <div
-        className="hidden lg:block lg:w-1/2 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      ></div>
+    <div
+      className="min-h-screen bg-cover bg-center px-6 py-12"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="max-w-4xl mx-auto bg-black/60 rounded-xl p-10 text-white shadow-lg">
+        <h1 className="text-5xl font-bold mb-10 text-center">Personalized Report</h1>
 
-      {/* Right content side */}
-      <div className="w-full lg:w-1/2 p-8 sm:p-10 md:p-14 overflow-y-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">Personalized Report</h1>
-
-        <div className="space-y-6 text-gray-700 font-medium leading-relaxed">
+        <div className="space-y-10 text-lg leading-relaxed">
           {reports.map(({ title, text }, index) => (
             <div key={index}>
-              <span className="block">
-                <strong className="text-blue-600">{title}:</strong> {text}
-              </span>
+              <h5 className="text-2xl font-semibold text-yellow-300 mb-2">{title}</h5>
+              <p className="text-white/90">{text}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center lg:justify-end">
+        <div className="mt-12 flex justify-center">
           <Link to="/">
-            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold rounded px-6 py-2 transition">
-              Back
+            <button className="bg-white hover:bg-red-600 text-black px-6 py-2 rounded font-semibold transition">
+              ← Back
             </button>
           </Link>
         </div>
@@ -68,4 +63,3 @@ const Progress = () => {
 };
 
 export default Progress;
-

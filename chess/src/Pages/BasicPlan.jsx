@@ -42,8 +42,8 @@ export const BasicPlan = () => (
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-200 text-black text-lg">
-              <th className="p-4 border border-gray-300">Feature Image</th>
-              <th className="p-4 border border-gray-300">Feature Title</th>
+              <th className="p-4 border border-gray-300 text-center">Feature Image</th>
+              <th className="p-4 border border-gray-300 text-center">Feature Title</th>
               <th className="p-4 border border-gray-300 text-center">Description</th>
             </tr>
           </thead>
