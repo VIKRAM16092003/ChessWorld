@@ -32,10 +32,18 @@ const Paymentpage = () => {
             Back to Home
           </button>
         </div>
-        <p class="text-white text-center font-sans text-[23px] pb-2
-         font-[600]">
-          {" "}
-          Pay and play Tournaments
+        <p
+          className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
+          style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
+        >
+          CHESS{" "}
+          <span
+            class="text-white font-[300] pl-2 tracking-[-1px] text-[20px]
+                "
+            style={{ letterSpacing: "-3px" }}
+          >
+            WORLD{" "}
+          </span>{" "}
         </p>
         <div class="w-[40vw] ml-[30vw] bg-[#dae2e6]/20 h-[550px] rounded-[10px] shadow-md mt-[10px] mb-[10px]"></div>
       </div>
