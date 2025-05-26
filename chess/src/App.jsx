@@ -30,6 +30,7 @@ import RazorPay from "./Pages/RazorPay";
 import Round from "./Pages/RoundRobin";
 import Tournament from "./Pages/tournament";
 import Room from './Pages/WaitingRoom';
+import Classical from './Pages/Tournament_page/Classical'
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/room" element={<Room/>}/>
+        <Route path="/classical" element={<Classical/>}/>
         <Route path="/pay" element={<RazorPay/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/privacy" element={<Privacy/>}/>

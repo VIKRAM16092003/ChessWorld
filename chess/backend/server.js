@@ -10,17 +10,18 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: 'http://localhost:3000',
+    credentials: true,
   },
 });
 
-const rooms = {}; // roomId: { players: [socket.id, ...] }
+const rooms = {};
 
 io.on('connection', (socket) => {
   console.log(`Socket connected: ${socket.id}`);
 
   socket.on('create-room', () => {
-    const roomId = nanoid(6); // e.g. "AB12CD"
+    const roomId = nanoid(6);
     rooms[roomId] = { players: [socket.id] };
     socket.join(roomId);
     socket.emit('room-created', roomId);
