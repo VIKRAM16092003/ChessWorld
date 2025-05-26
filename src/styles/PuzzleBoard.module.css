@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+
+.board {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid rgb(39, 34, 34);
+}
+
+.sidebar {
+  min-width: 220px;
+  padding: 1rem;
+  border: 1px solid #723535;
+  border-radius: 10px;
+  background-color: #8497b0;
+  color: rgb(108, 108, 15);
+  font-style: oblique;
+}
+
+.solutionList {
+  margin-top: 1rem;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  list-style-type:decimal;
+  color:cadetblue;
+  font-style: oblique;
+}
+
+.sidebar button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background: white;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #9c7676;
+}
+
+.timer {
+  font-size: 18px;
+  color: #d35400;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.failed {
+  color: red;
+  font-weight: bold;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
