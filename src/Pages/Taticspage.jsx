@@ -212,19 +212,19 @@ const Tacticspage = () => {
               className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
               style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
             >
-               CHESS{" "} 
+              CHESS{" "}
               <span
                 class="text-white font-[300] tracking-[-1px] pl-2 text-[20px]
                 "
                 style={{ letterSpacing: "-3px" }}
               >
-                 WORLD{" "} 
+                WORLD{" "}
               </span>{" "}
             </p>
           </Link>
           <button
-            className="w-[130px]  rounded-[10px] bg-[#096B68] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
-            style={{ borderRadius: "10px",marginTop:"30px" }}
+            className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+            style={{ borderRadius: "10px", marginTop: "30px" }}
             onClick={() => navigate("/")}
           >
             Back to Home
@@ -233,22 +233,22 @@ const Tacticspage = () => {
 
         <div class="flex flex-row mt-[20px] items-center justify-center gap-4">
           {/* <hr class="w-[28vw] border-[#EAE4D5]" style={{ color: "#fff" }} /> */}
-          <p class="whitespace-nowrap text-justify text-[#F2F2F2] font-[800] text-[30px]"
-          style={{fontFamily:"Anton sans-serif"}}>
+          <p
+            class="whitespace-nowrap text-justify text-[#F2F2F2] font-[800] text-[30px]"
+            style={{ fontFamily: "Anton sans-serif" }}
+          >
             {" "}
             Know More About Some Chess Tactics Here
           </p>
           {/* <hr class="w-[28vw]  " style={{ color: "#fff" }} /> */}
         </div>
 
-       
-
         {/* boardcontainer */}
         <div className="h-[1550px] border-[1px] border-[#EAE4D5] rounded-[10px] pt-5 ml-[5vw] pl-[10px] pt-2 mr-[5vw] bg-[#dae2e6]/20 p-1 mt-4 flex flex-wrap justify-evenly ">
           {boards.map((board, index) => (
             <div
               key={index}
-              onClick={() => setSelectedBoardIndex(index)} // set clicked board index here
+              onClick={() => setSelectedBoardIndex(index)}
               className="cursor-pointer"
             >
               <Chessboardpagefortatics
@@ -265,23 +265,23 @@ const Tacticspage = () => {
           {selectedBoardIndex !== null && (
             <div
               className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedBoardIndex(null)} // clicking outside closes popup
+              onClick={() => setSelectedBoardIndex(null)}
             >
               <div
                 className="bg-white/20 rounded-lg shadow-lg max-w-[90vw] max-h-[90vh] overflow-auto p-6 relative"
-                onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside popup
+                onClick={(e) => e.stopPropagation()}
               >
                 <button
                   className="absolute top-3 border-0 rounded-[10px] right-3 text-black bg-white w-[90px] h-[30px] font-bold text-2xl"
                   onClick={() => setSelectedBoardIndex(null)}
-                  style={{borderRadius:"10px"}}
+                  style={{ borderRadius: "10px" }}
                   aria-label="Close"
                 >
                   Close
                 </button>
                 <Chessboardpagefortatics
                   boardData={boards[selectedBoardIndex]}
-                   contentData={content[selectedBoardIndex]}
+                  contentData={content[selectedBoardIndex]}
                   highlightSquares={highlights[selectedBoardIndex]}
                   highlightPiece={highlightPieces[selectedBoardIndex]}
                   tacticgHeading={tacticgHeading[selectedBoardIndex]}
@@ -292,9 +292,9 @@ const Tacticspage = () => {
                   <button
                     className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
                     onClick={() => setSelectedBoardIndex((prev) => prev - 1)}
-                   disabled={selectedBoardIndex === 0}
+                    disabled={selectedBoardIndex === 0}
                   >
-                  Previous
+                    Previous
                   </button>
 
                   <button
@@ -302,7 +302,7 @@ const Tacticspage = () => {
                     onClick={() => setSelectedBoardIndex((prev) => prev + 1)}
                     disabled={selectedBoardIndex === boards.length - 1}
                   >
-                    Next 
+                    Next
                   </button>
                 </div>
               </div>

@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./StartGame.css";
-import logo from "../../assets/logo.jpg";
+import chessbgimg from "../assets/chessbgimg.jpg";
+import logo from "../assets/logo.jpg";
 
-function StartGame() {
+function BlitzGame() {
   const location = useLocation();
   const navigate = useNavigate();
-  const timer = location.state?.timer || 600;
+  const timer = location.state?.timer || 180;
 
   const [game, setGame] = useState(new Chess());
   const [history, setHistory] = useState([]);
@@ -79,7 +79,9 @@ function StartGame() {
     setHistory(gameInstance.history());
 
     if (gameInstance.isCheckmate()) {
-      toast.success(`Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`);
+      toast.success(
+        `Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`
+      );
       setResult(`Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`);
     } else if (gameInstance.isStalemate()) {
       toast.success("Stalemate! It's a draw.");
@@ -91,7 +93,13 @@ function StartGame() {
   };
 
   const onDrop = (source, target) => {
-    if (!isGameStarted || game.isGameOver() || result || whiteTime === 0 || blackTime === 0)
+    if (
+      !isGameStarted ||
+      game.isGameOver() ||
+      result ||
+      whiteTime === 0 ||
+      blackTime === 0
+    )
       return false;
 
     const piece = game.get(source);
@@ -168,7 +176,10 @@ function StartGame() {
   };
 
   return (
-    <div className="p-5 pt-3 bg-[#5c636a]/80">
+    <div
+      className="min-h-screen w-full bg-cover bg-center bg-[#EFEEEA] font-sans"
+      style={{ backgroundImage: `url(${chessbgimg})` }}
+    >
       <div class="flex flex-row justify-between mb-2">
         <Link
           to="/"
@@ -202,7 +213,7 @@ function StartGame() {
         </button>
       </div>
       <div
-        className={`bg-indigo-100 start-game-wrapper ${
+        className={`bg-black/10 start-game-wrapper ${
           isDarkMode ? "dark-mode" : ""
         }`}
       >
@@ -238,32 +249,30 @@ function StartGame() {
                 gap: "10px",
               }}
             >
-              {["Play", "Puzzles", "Lessons", "Analysis", "Dark Mode"].map(
-                (btn) => (
-                  <button
-                    key={btn}
-                    className="btn btn-dark"
-                    onClick={
-                      btn === "Play"
-                        ? startGame
-                        : btn === "Dark Mode"
-                        ? () => setIsDarkMode((prev) => !prev)
-                        : () => {
-                            const routeMap = {
-                              Puzzles: "/puzzles",
-                              Lessons: "/lesson",
-                              Analysis: "/analyse",
-                            };
-                            const route = routeMap[btn];
-                            if (route) navigate(route);
-                          }
-                    }
-                    disabled={btn === "Play" && isGameStarted}
-                  >
-                    {btn}
-                  </button>
-                )
-              )}
+              {["Play"].map((btn) => (
+                <button
+                  key={btn}
+                  className="btn btn-dark"
+                  onClick={
+                    btn === "Play"
+                      ? startGame
+                      : btn === "Dark Mode"
+                      ? () => setIsDarkMode((prev) => !prev)
+                      : () => {
+                          const routeMap = {
+                            Puzzles: "/puzzles",
+                            Lessons: "/lesson",
+                            Analysis: "/analyse",
+                          };
+                          const route = routeMap[btn];
+                          if (route) navigate(route);
+                        }
+                  }
+                  disabled={btn === "Play" && isGameStarted}
+                >
+                  {btn}
+                </button>
+              ))}
             </div>
 
             {/* Game Body */}
@@ -275,85 +284,6 @@ function StartGame() {
                 flexWrap: "wrap",
               }}
             >
-              {/* Move History Panel */}
-              <div
-                style={{ flex: "0.5", minWidth: "180px", textAlign: "center" }}
-              >
-                <h4>Moves</h4>
-                <div
-                  style={{
-                    height: "200px",
-                    overflowY: "scroll",
-                    border: "1px solid gray",
-                    borderRadius: "8px",
-                    padding: "10px",
-                    marginBottom: "15px",
-                  }}
-                >
-                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>White</th>
-                        <th>Black</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {history
-                        .reduce((rows, move, i) => {
-                          if (i % 2 === 0)
-                            rows.push([Math.floor(i / 2) + 1, move, null]);
-                          else rows[rows.length - 1][2] = move;
-                          return rows;
-                        }, [])
-                        .map(([n, w, b]) => (
-                          <tr key={n}>
-                            <td>
-                              <strong>{n}.</strong>
-                            </td>
-                            <td>{w}</td>
-                            <td>{b || ""}</td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {!isGameStarted && (
-                  <>
-                    <div className="mb-2">
-                      <label>
-                        <strong>Select Game Mode:</strong>
-                      </label>
-                      <select
-                        className="form-select"
-                        value={gameMode}
-                        onChange={(e) => setGameMode(e.target.value)}
-                      >
-                        <option value="ai">Play with AI</option>
-                        <option value="twoPlayer">Two Player</option>
-                      </select>
-                    </div>
-
-                    {gameMode === "ai" && (
-                      <div className="mb-2">
-                        <label>
-                          <strong>Select Side:</strong>
-                        </label>
-                        <select
-                          className="form-select"
-                          value={playerSide}
-                          onChange={(e) => setPlayerSide(e.target.value)}
-                        >
-                          <option value="w">White (You play first)</option>
-                          <option value="b">Black (AI plays first)</option>
-                        </select>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-
               {/* Chessboard */}
               <div style={{ flex: "none", textAlign: "center" }}>
                 <Chessboard
@@ -393,18 +323,23 @@ function StartGame() {
                   textAlign: "center",
                 }}
               >
-                <div className="player-box">
-                  <h4>White</h4>
-                  <div style={{ fontSize: "28px" }}>
-                    {Math.floor(whiteTime / 60)}:
-                    {String(whiteTime % 60).padStart(2, "0")}
+                <div className="player-box flex flex-row">
+                  <div className="border-[1px] p-[50px] border-[#fff]">
+                    <h4>White</h4>
+                    <div style={{ fontSize: "28px" }}>
+                      {Math.floor(whiteTime / 60)}:
+                      {String(whiteTime % 60).padStart(2, "0")}
+                    </div>
                   </div>
-                </div>
-                <div className="player-box">
-                  <h4>Black</h4>
-                  <div style={{ fontSize: "28px", marginBottom: "20px" }}>
-                    {Math.floor(blackTime / 60)}:
-                    {String(blackTime % 60).padStart(2, "0")}
+
+                  <div className="player-box">
+                    <div className="border-[1px] p-[50px] border-[#fff]">
+                      <h4>Black</h4>
+                      <div style={{ fontSize: "28px", marginBottom: "20px" }}>
+                        {Math.floor(blackTime / 60)}:
+                        {String(blackTime % 60).padStart(2, "0")}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -432,48 +367,90 @@ function StartGame() {
 
                 <div style={{ marginTop: "20px", textAlign: "left" }}>
                   <h5>Chat</h5>
+                  {/* Move History Panel */}
                   <div
                     style={{
-                      height: "150px",
-                      overflowY: "scroll",
-                      border: "1px solid #ccc",
-                      borderRadius: "8px",
-                      padding: "10px",
-                      backgroundColor: isDarkMode ? "#222" : "#f9f9f9",
-                      color: isDarkMode ? "white" : "black",
-                      marginBottom: "10px",
+                      flex: "0.5",
+                      minWidth: "180px",
+                      textAlign: "center",
                     }}
                   >
-                    {chatLog.length === 0 && <div>No messages yet.</div>}
-                    {chatLog.map((msg, i) => (
-                      <div key={i} style={{ marginBottom: "5px" }}>
-                        {msg}
-                      </div>
-                    ))}
-                  </div>
+                    <h4>Moves</h4>
+                    <div
+                      style={{
+                        height: "200px",
+                        overflowY: "scroll",
+                        border: "1px solid gray",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        marginBottom: "15px",
+                      }}
+                    >
+                      <table
+                        style={{ width: "100%", borderCollapse: "collapse" }}
+                      >
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>White</th>
+                            <th>Black</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {history
+                            .reduce((rows, move, i) => {
+                              if (i % 2 === 0)
+                                rows.push([Math.floor(i / 2) + 1, move, null]);
+                              else rows[rows.length - 1][2] = move;
+                              return rows;
+                            }, [])
+                            .map(([n, w, b]) => (
+                              <tr key={n}>
+                                <td>
+                                  <strong>{n}.</strong>
+                                </td>
+                                <td>{w}</td>
+                                <td>{b || ""}</td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    </div>
 
-                  <input
-                    type="text"
-                    value={chat}
-                    onChange={(e) => setChat(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleSendChat()}
-                    placeholder="Type your message"
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      borderRadius: "8px",
-                      border: "1px solid #ccc",
-                    }}
-                    disabled={!isGameStarted}
-                  />
-                  <button
-                    onClick={handleSendChat}
-                    disabled={!chat.trim() || !isGameStarted}
-                    className="btn btn-primary"
-                    style={{ marginTop: "5px", width: "100%" }}
-                  >
-                    Send
-                  </button>
+                    {!isGameStarted && (
+                      <>
+                        <div className="mb-2">
+                          <label>
+                            <strong>Select Game Mode:</strong>
+                          </label>
+                          <select
+                            className="form-select"
+                            value={gameMode}
+                            onChange={(e) => setGameMode(e.target.value)}
+                          >
+                            <option value="ai">Play with AI</option>
+                            <option value="twoPlayer">Two Player</option>
+                          </select>
+                        </div>
+
+                        {gameMode === "ai" && (
+                          <div className="mb-2">
+                            <label>
+                              <strong>Select Side:</strong>
+                            </label>
+                            <select
+                              className="form-select"
+                              value={playerSide}
+                              onChange={(e) => setPlayerSide(e.target.value)}
+                            >
+                              <option value="w">White (You play first)</option>
+                              <option value="b">Black (AI plays first)</option>
+                            </select>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -484,4 +461,4 @@ function StartGame() {
   );
 }
 
-export default StartGame;
+export default BlitzGame;
