@@ -59,11 +59,7 @@ const Home = () => {
                   Get Started
                 </button>
                 </Link>
-                {/* Uncomment if you want to add a Features button */}
-                {/* <button className="border-2 border-[#FE5D26] text-[#FE5D26] bg-transparent hover:bg-[#FE5D26] hover:text-white font-bold px-6 py-2 rounded transition">
-                  Features
-      
-                </button> */}
+                
               </div>
             </div>
 
