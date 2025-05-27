@@ -1,7 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-
 
 const lessons = [
   {
@@ -28,47 +26,51 @@ function Lesson() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-indigo-100 via-white to-indigo-200 min-h-screen px-6 py-5">
-      <div className="max-w-7xl mx-3 ">
+    <div
+      className="min-h-screen px-6 py-5 bg-cover bg-center"
+      style={{ backgroundImage: `url('src/assets/chessbgimg.jpg')` }} // Replace with your actual image path
+    >
+      <div className="max-w-7xl mx-3">
         {/* Back Button */}
         <button
-          className="btn flex items-center gap-2 text-white btn-dark"
+          className="btn btn-dark flex items-center gap-2 text-white bg-black/70 hover:bg-black/90 px-4 py-2 rounded"
           onClick={() => navigate("/play")}
         >
-           ← Back to Play
+          ← Back to Play
         </button>
 
         {/* Header */}
         <div className="ps-5 ms-5">
-          <div className="ps-5 ms-5">
           <center>
-        <h2 className="mb-4 text-4xl font-extrabold text-center text-indigo-800 drop-shadow-md">
-          ♟️ Chess Lessons
-        </h2>
-
-        {/* Lesson Cards Grid */}
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {lessons.map((lesson) => (
-            <div
-              key={lesson.id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between border border-gray-200"
-            >
-              <div>
-                <h3 className="text-xl font-semibold text-indigo-700 mb-2">{lesson.title}</h3>
-                <p className="text-gray-600">{lesson.description}</p>
-              </div>
-              <button
-                onClick={() => handleStartLesson(lesson.id)}
-                className="mt-6 bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
-              >
-                Start Lesson
-              </button>
+             <div className="flex items-center justify-center gap-4"><div className="flex-1 h-px bg-white opacity-50"></div>  
+            <h2 className="mb-4 text-4xl fw-bold  text-dark drop-shadow-lg">
+              ♟️ Chess Lessons
+            </h2>
+            <div className="flex-1 h-px bg-white opacity-50"></div> 
             </div>
-          ))}
+
+            {/* Lesson Cards Grid */}
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+              {lessons.map((lesson) => (
+                <div
+                  key={lesson.id}
+                  className="bg-white/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between border border-white/40"
+                >
+                  <div>
+                    <h3 className="text-xl fw-bold text-indigo-900 mb-2">{lesson.title}</h3>
+                    <p className="text-shadow text-dark fw-bold">{lesson.description}</p>
+                  </div>
+                  <button
+                    onClick={() => handleStartLesson(lesson.id)}
+                    className="mt-6 font-bold   btn btn-dark py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Start Lesson
+                  </button>
+                </div>
+              ))}
+            </div>
+          </center>
         </div>
-        </center>
-        </div>
-      </div>
       </div>
     </div>
   );

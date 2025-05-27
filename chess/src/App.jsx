@@ -24,6 +24,8 @@ import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
+import Tournment from './Pages/Tournment';
+import AddMoney from './Pages/AddMoney';
 
 const App = () => {
   return (
@@ -38,12 +40,15 @@ const App = () => {
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
+        <Route path="/addmoney" element={<AddMoney/>}/>
+
         <Route path="/play" element={<StartGame/>}/>
          <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/freePlan" element={<FreePlan/>}/>
         <Route path="/basicPlan" element={<BasicPlan/>}/>
         <Route path="/premiumPlan" element={<PremiumPlan/>}/>
+         <Route path="/tournment" element={<Tournment/>}/>
         <Route path="/puzzles" element={<Puzzles/>}/>
         <Route path="/analyse" element={<Analyse/>}/>
         <Route path="/lesson" element={<Lesson/>}/>
