@@ -174,7 +174,7 @@ function StartGame() {
         ← Back to Home
       </button>
       <p 
-          className="absolute text-shadow-lg top-12 shadow-lg h3 right-170 z-20 text-black  px-4 py-2 rounded flex items-center gap-2"
+          className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-black  px-4 py-2 rounded flex items-center gap-2 ml-[50px]"
         >Do Or Die</p>
       <button
           className="absolute top-9 right-20 z-20 text-white bg-success hover:bg-black/90 px-4 py-2 rounded flex items-center gap-2"
@@ -187,7 +187,6 @@ function StartGame() {
             style={{
               width: "100%",
               maxWidth: "1400px",
-              // background: isDarkMode ? "#1e1e1e" : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
               border: "1px solid #ddd",
               borderRadius: "12px",
               boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
@@ -353,7 +352,7 @@ customLightSquareStyle={{
                 </button>}
 
                 <div style={{ marginTop: "20px", textAlign: "left" }}>
-                  <center><h5 className="bg-transparent text-dark">Chat</h5></center>
+                  <center><h5 className="bg-transparent text-light">Chat</h5></center>
                   
                   <div
                     style={{

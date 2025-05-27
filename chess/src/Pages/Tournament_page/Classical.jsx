@@ -3,7 +3,7 @@ import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import "./StartGame.css";
 
 function StartGame() {
   const location = useLocation();
@@ -166,17 +166,22 @@ function StartGame() {
   };
 
   return (
-    <div className="p-5 bg-blue-100">
+    <div className="p-5 bg-blue-100 hi">
       <button className="btn btn-dark mb-3" onClick={() => navigate("/")}>
         ← Back to Home
       </button>
-      <div className={`bg-indigo-100 start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
-        <div style={{ fontFamily: "sans-serif", padding: 20, display: "flex", justifyContent: "center" }}>
-          <div
+      <p className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-black px-4 py-2 rounded flex items-center gap-2 ">
+        Classical Game
+      </p>
+      <button className="absolute top-9 right-20 z-20 text-white bg-success hover:bg-black/90 px-4 py-2 rounded flex items-center gap-2">
+        {`Balance: $10000`}
+      </button>
+      <div className={`bg-transparent start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
+        <div className="bg-transparent" style={{ fontFamily: "sans-serif", padding: 20, display: "flex", justifyContent: "center" }}>
+          <div className="bg-transparent"
             style={{
               width: "100%",
               maxWidth: "1400px",
-              background: isDarkMode ? "#1e1e1e" : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
               border: "1px solid #ddd",
               borderRadius: "12px",
               boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
@@ -185,7 +190,7 @@ function StartGame() {
             }}
           >
             {/* Top Navigation */}
-            <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: 20, flexWrap: "wrap", gap: "10px" }}>
+            <div className="bg-transparent" style={{ display: "flex", justifyContent: "space-evenly", marginBottom: 20, flexWrap: "wrap", gap: "10px" }}>
               {["Play", "Puzzles", "Lessons", "Analysis", "Dark Mode"].map((btn) => (
                 <button
                   key={btn}
@@ -227,28 +232,33 @@ function StartGame() {
                     marginBottom: "15px",
                   }}
                 >
-                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <table style={{ border: "3px solid black", width: "100%", borderCollapse: "collapse" }}>
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>White</th>
-                        <th>Black</th>
+                        <th style={{ textAlign: "left", padding: "8px", border: "1px solid black" }}>No</th>
+                        <th style={{ textAlign: "left", padding: "8px", border: "1px solid black" }}>White</th>
+                        <th style={{ textAlign: "left", padding: "8px", border: "1px solid black" }}>Black</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {history
-                        .reduce((rows, move, i) => {
-                          if (i % 2 === 0) rows.push([Math.floor(i / 2) + 1, move, null]);
-                          else rows[rows.length - 1][2] = move;
-                          return rows;
-                        }, [])
-                        .map(([n, w, b]) => (
-                          <tr key={n}>
-                            <td><strong>{n}.</strong></td>
-                            <td>{w}</td>
-                            <td>{b || ""}</td>
-                          </tr>
-                        ))}
+                      {history.length === 0 ? (
+                        <tr>
+                          <td colSpan={3} style={{ textAlign: "center", padding: "10px", border: "1px solid black" }}>No moves yet</td>
+                        </tr>
+                      ) : (
+                        Array.from({ length: Math.ceil(history.length / 2) }, (_, index) => {
+                          const whiteMove = history[2 * index] || "";
+                          const blackMove = history[2 * index + 1] || "";
+
+                          return (
+                            <tr key={index}>
+                              <td style={{ padding: "8px", fontWeight: "bold", border: "1px solid black" }}>{index + 1}.</td>
+                              <td style={{ padding: "8px", border: "1px solid black" }}>{whiteMove}</td>
+                              <td style={{ padding: "8px", border: "1px solid black" }}>{blackMove}</td>
+                            </tr>
+                          );
+                        })
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -279,6 +289,7 @@ function StartGame() {
               {/* Chessboard */}
               <div style={{ flex: "none", textAlign: "center" }}>
                 <Chessboard
+                  className="ms-4"
                   position={game.fen()}
                   onPieceDrop={onDrop}
                   onMouseOverSquare={onMouseOverSquare}
@@ -290,15 +301,15 @@ function StartGame() {
                     boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
                   }}
                   customDarkSquareStyle={{
-                    backgroundColor: "#C0C0C0", // Silver
+                    backgroundColor: "#b58863", // Brown
                   }}
                   customLightSquareStyle={{
-                    backgroundColor: "#FFFFFF", // White
+                    backgroundColor: "#f0d9b5", // Beige
                   }}
                   arePiecesDraggable={isGameStarted && !game.isGameOver() && !result}
                 />
                 {isGameStarted && gameMode === "ai" && (
-                  <h5 style={{ marginTop: "10px" }}>
+                  <h5 className="text-white fw-bold text-shadow-lg" style={{ marginTop: "10px" }}>
                     You are playing as: {playerSide === "w" ? "White" : "Black"}
                   </h5>
                 )}
@@ -306,18 +317,21 @@ function StartGame() {
 
               {/* Timer and Chat Panel */}
               <div style={{ flex: "1", minWidth: "250px", padding: "10px", textAlign: "center" }}>
-                <div className="player-box">
-                  <h4>White</h4>
-                  <div style={{ fontSize: "28px" }}>
-                    {Math.floor(whiteTime / 60)}:{String(whiteTime % 60).padStart(2, "0")}
+                <center>
+                  <div className="bg-dark player-box white-player">
+                    <h4 className="text-white player-label">White</h4>
+                    <div className="text-white player-timer">
+                      {Math.floor(whiteTime / 60)}:{String(whiteTime % 60).padStart(2, "0")}
+                    </div>
                   </div>
-                </div>
-                <div className="player-box">
-                  <h4>Black</h4>
-                  <div style={{ fontSize: "28px", marginBottom: "20px" }}>
-                    {Math.floor(blackTime / 60)}:{String(blackTime % 60).padStart(2, "0")}
+
+                  <div className="bg-dark player-box black-player">
+                    <h4 className="text-white player-label">Black</h4>
+                    <div className="text-white player-timer">
+                      {Math.floor(blackTime / 60)}:{String(blackTime % 60).padStart(2, "0")}
+                    </div>
                   </div>
-                </div>
+                </center>
 
                 {result && (
                   <div style={{ backgroundColor: "red", color: "white", padding: "10px", borderRadius: "8px", marginBottom: "20px" }}>
@@ -325,12 +339,13 @@ function StartGame() {
                   </div>
                 )}
 
-                <button onClick={resetGame} className="btn btn-outline-dark" style={{ marginBottom: "10px" }}>
+                <button onClick={resetGame} className="btn btn-dark" style={{ marginBottom: "10px" }}>
                   Restart Game
                 </button>
 
                 <div style={{ marginTop: "20px", textAlign: "left" }}>
-                  <h5>Chat</h5>
+                  <center><h5 className="bg-transparent text-light">Chat</h5></center>
+                  
                   <div
                     style={{
                       height: "150px",
@@ -355,9 +370,16 @@ function StartGame() {
                     onChange={(e) => setChat(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSendChat()}
                     placeholder="Type your message"
-                    style={{ width: "100%", padding: "8px", borderRadius: "8px", border: "1px solid #ccc" }}
+                    style={{
+                      width: "100%",
+                      padding: "8px",
+                      borderRadius: "8px",
+                      border: "1px solid #ffffff",
+                      backgroundColor: "white"
+                    }}
                     disabled={!isGameStarted}
                   />
+
                   <button
                     onClick={handleSendChat}
                     disabled={!chat.trim() || !isGameStarted}
