@@ -24,8 +24,18 @@ import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
+<<<<<<< HEAD
 import Tournment from './Pages/Tournment';
 import AddMoney from './Pages/AddMoney';
+=======
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import RazorPay from "./Pages/RazorPay";
+import Round from "./Pages/RoundRobin";
+import Tournament from "./Pages/tournament";
+import Room from './Pages/WaitingRoom';
+import Classical from './Pages/Tournament_page/Classical'
+>>>>>>> ec2bdbe6b9393c542c7c2826c2c3605be1c68e30
 
 const App = () => {
   return (
@@ -35,7 +45,12 @@ const App = () => {
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/room" element={<Room/>}/>
+        <Route path="/classical" element={<Classical/>}/>
+        <Route path="/pay" element={<RazorPay/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
+        <Route path="/register" element={<Register/>}/>
         <Route path="/SuggestedPuzzles" element={<SuggestedPuzzles/>}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>
@@ -57,6 +72,8 @@ const App = () => {
         <Route path="/progress" element={<Progress/>}/>
         <Route path="/tracker" element={<Tracker/>}/>
         <Route path="/pricing" element={<Pricing/>}/>
+        <Route path="/round" element={<Round/>}/>
+        <Route path="/tournament" element={<Tournament/>}/>
         <Route path="/features" element={<Features/>}/>
 
 

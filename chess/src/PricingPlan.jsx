@@ -29,20 +29,20 @@ function Pricing() {
           }
 
           .free-btn {
-            background-color: #fff;
-            color: #374151;
+            background-color: black;
+            color: white;
             border: 1px solid #00796b;
           }
 
           .basic-btn {
-            background-color: #fff;
-            color: #374151;
+            background-color: black;
+            color: white;
             border: 1px solid #5e35b1;
           }
 
           .premium-btn {
-            background-color: #fff;
-            color: #374151;
+            background-color: black;
+            color: white;
             border: 1px solid #ef6c00;
           }
 
@@ -95,12 +95,12 @@ function Pricing() {
             {/* Free Plan */}
             <Link to="/freePlan" style={{ textDecoration: "none" }}>
               <div className="plan-card p-8 text-left text-black">
-                <h3 className="text-lg font-bold text-teal-700 mb-2">
+                <center><h3 className="text-lg font-bold text-teal-700 mb-2">
                   Free Plan
-                </h3>
+                </h3></center>
                 <p className="text-sm text-gray-700 mb-6">
                   
-                  <h6>Basic access to features and limited content.</h6>
+                  <h6 className="text-white">Basic access to features and limited content.</h6>
                 </p>
                 <button className="plan-button free-btn">Select</button>
               </div>
@@ -109,11 +109,11 @@ function Pricing() {
             {/* Basic Plan */}
             <Link to="/basicPlan" style={{ textDecoration: "none" }}>
               <div className="plan-card p-8 text-left text-black">
-                <h3 className="text-lg font-bold text-purple-700 mb-2">
+                <center><h3 className="text-lg font-bold text-purple-700 mb-2">
                   Basic Plan
-                </h3>
+                </h3></center>
                 <p className="text-sm text-gray-700 mb-6">
-                  <h6>Unlock more puzzles and track your progress.</h6>
+                  <h6 className="text-white">Unlock more puzzles and track your progress.</h6>
                 </p>
                 <button className="plan-button basic-btn">Select</button>
               </div>
@@ -122,11 +122,11 @@ function Pricing() {
             {/* Premium Plan */}
             <Link to="/premiumPlan" style={{ textDecoration: "none" }}>
               <div className="plan-card p-8 text-left text-black">
-                <h3 className="text-lg font-bold text-orange-700 mb-2">
+                <center><h3 className="text-lg font-bold text-orange-700 mb-2">
                   Premium Plan
-                </h3>
+                </h3></center>
                 <p className="text-sm text-gray-700 mb-6">
-                  <h6>Full access to all features and tools without lag.</h6>
+                  <h6 className="text-white">Full access to all features and tools without lag.</h6>
                 </p>
                 <button className="plan-button premium-btn">Select</button>
               </div>
