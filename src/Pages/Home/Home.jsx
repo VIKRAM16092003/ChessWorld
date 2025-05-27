@@ -48,28 +48,28 @@ const Home = () => {
 
               <Link
                 to="/play"
-                className=" border-[white] bg-[#047857]   font-[700]  hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+                className=" border-[white] bg-[#047857]   font-[700]  hover:bg-[#065f46]  hover:text-white px-4 py-2 rounded transition"
                 style={{ textDecoration: "none", color: "#F2F2F2" }}
               >
                 Start Free
               </Link>
               <Link
                 to="/features"
-                className=" border-[white] bg-[#047857]  font-[700]  hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+                className=" border-[white] bg-[#047857]  font-[700]  hover:bg-[#065f46]  hover:text-white px-4 py-2 rounded transition"
                 style={{ textDecoration: "none", color: "#F2F2F2" }}
               >
                 Features
               </Link>
               <Link
                 to="/register"
-                className=" border-[white] bg-[#047857]   font-[700] hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+                className=" border-[white] bg-[#047857]   font-[700] hover:bg-[#065f46]  hover:text-white px-4 py-2 rounded transition"
                 style={{ textDecoration: "none", color: "#F2F2F2" }}
               >
                 Premium
               </Link>
               <Link
                 to="/tactics"
-                className=" border-[white] bg-[#047857]   font-[700] hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+                className=" border-[white] bg-[#047857]   font-[700] hover:bg-[#065f46]  hover:text-white px-4 py-2 rounded transition"
                 style={{ textDecoration: "none", color: "#F2F2F2" }}
               >
                 Tactics
@@ -95,7 +95,7 @@ const Home = () => {
               </p>
               <div className="flex flex-row w-[294px] justify-between space-x-4 mt-3">
                 <button
-                  className=" w-[240px]  bg-[#047857]  hover:bg-[#FE5D26] hover:text-white font-bold px-5 py-2 rounded transition"
+                  className=" w-[240px]  bg-[#047857]  hover:bg-[#065f46]  hover:text-white font-bold px-5 py-2 rounded transition"
                   style={{ marginTop: "15px", color: "#F2F2F2" }}
                 >
                   Get Start Analysis

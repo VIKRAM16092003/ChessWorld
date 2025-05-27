@@ -26,6 +26,9 @@ import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
 import Registerpage from './Pages/registerpage';
 import Tacticspage from './Pages/Taticspage';
+import ChessTournaments from './Pages/ChessTournaments';
+import BlitzGame from './Pages/Blitzgame';
+
 
 const App = () => {
   return (
@@ -37,8 +40,10 @@ const App = () => {
         <div style={{ flex: "1" }}>
           <Routes>
             <Route path="/" element={<Home />} />
-           <Route path="/register" element={<Registerpage/>} />
-           <Route path="/tactics" element={<Tacticspage/>} />
+            <Route path="/register" element={<Registerpage />} />
+            <Route path="/tournaments" element={<ChessTournaments />} />
+            <Route path="/blitzgame" element={<BlitzGame />} />
+            <Route path="/tactics" element={<Tacticspage />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/SuggestedPuzzles" element={<SuggestedPuzzles />} />
             <Route path="/blog" element={<Blog />} />

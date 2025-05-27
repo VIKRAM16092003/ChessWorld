@@ -69,6 +69,8 @@ const Registerpage = () => {
                 WORLD{" "}
               </span>{" "}
             </p>
+            <Link to="/tournaments">Tournaments</Link>
+            <Link to="/blitzgame">Blitzgame</Link>
           </Link>
           <button
             className="btn btn-dark mt-3  mb-3 h-[50px] right"
