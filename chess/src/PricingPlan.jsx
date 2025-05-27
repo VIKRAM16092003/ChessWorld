@@ -76,8 +76,15 @@ function Pricing() {
     backgroundAttachment: "fixed",
   }}
 >
-
+  <Link to={"/"}><button
+          className="absolute top-20 left-20 text-white bg-dark hover:bg-black/90 px-4 py-2 rounded flex items-center gap-2"
+        >
+          Back To Home
+        </button>
+</Link>
+  
         <div className="max-w-6xl mx-auto">
+          
           <div className="heading-wrapper">
             <div className="line" />
             <h2 className="heading-text">Choose Your Plan</h2>

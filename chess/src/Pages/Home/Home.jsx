@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import chesshomeimg from "../../assets/chesshomeimg.jpg";
 import chessbgimg from "../../assets/chessbgimg.jpg";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 
 const Home = () => {
   return (
@@ -20,26 +20,37 @@ const Home = () => {
               <img
                 src={logo}
                 alt="Company Logo"
-                className="w-20 h-20 rounded-full object-cover"
+                className="w-30 h-20  object-cover"
               />
-              <span className="text-4xl font-bold">CHESS WORLD</span>
+              
             </Link>
             <div className="flex space-x-4">
               <Link
   to="/pricing"
-  className="border-2 border-[white] text-white bg-transparent hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+  className="border-2 border-[white] text-white btn btn-danger hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
   style={{ textDecoration: "none" }}
 >
   Pricing
 </Link>
 
               <Link
+<<<<<<< HEAD
+  to="/play"
+  state={{ data: 180 }}  // 3 minutes in seconds
+  className="btn btn-success border-2 border-[white] text-white hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
+  style={{ textDecoration: "none" }}
+>
+  Start Free
+</Link>
+
+=======
                 to="/play"
                 className="border-2 border-[white] text-white bg-transparent hover:bg-[#FE5D26] hover:text-white px-4 py-2 rounded transition"
                 style={{ textDecoration: "none" }}
               >
                 Start Free
               </Link>
+>>>>>>> ec2bdbe6b9393c542c7c2826c2c3605be1c68e30
             </div>
           </div>
 
@@ -47,16 +58,24 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-between items-center flex-grow">
             {/* Left Text */}
             <div className="text-white max-w-md mb-10 md:mb-0 ml-4">
-              <h1 className="text-5xl font-bold leading-tight mb-4">
-                PLAY SMARTER <br /> LEARN FASTER
-              </h1>
-              <p className="text-lg font-medium mb-6">
-                Enhance your skills and improve your focus with this platform!
-              </p>
+              <h1 className="text-6xl font-extrabold leading-tight tracking-tight text-gray-900 mb-6">
+  <span className="block text-2xl text-shadow-neutral-50">PLAY SMARTER</span>
+  <span className="block text-shadow-neutral-50">LEARN FASTER</span>
+</h1>
+<p className="text-xl text-shadow-neutral-50 font-medium mb-8 max-w-xl">
+  Enhance your skills and sharpen your focus with our interactive learning platform.
+</p>
+
               <div className="flex space-x-4">
+<<<<<<< HEAD
+                <Link to={"/tournment"}>
+                                <button className="btn btn-primary font-bold px-5 py-2 rounded transition">
+                  Go To Tournment
+=======
                 <Link to="/play">
                 <button className="border-2 border-[#FE5D26] text-[#FE5D26] bg-transparent hover:bg-[#FE5D26] hover:text-orange font-bold px-5 py-2 rounded transition">
                   Get Started
+>>>>>>> ec2bdbe6b9393c542c7c2826c2c3605be1c68e30
                 </button>
                 </Link>
                 

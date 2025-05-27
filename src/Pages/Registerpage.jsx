@@ -56,8 +56,18 @@ const Registerpage = () => {
               alt="Company Logo"
               className="w-20 h-20 rounded-full object-cover"
             />
-            <p className="text-[40px] font-bold text-black pt-3">
-              CHESS <span class="text-white text-[30px]">WORLD </span>{" "}
+            <p
+              className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
+              style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
+            >
+              CHESS{" "}
+              <span
+                class="text-white font-[300] pl-2 tracking-[-1px] text-[20px]
+                "
+                style={{ letterSpacing: "-3px" }}
+              >
+                WORLD{" "}
+              </span>{" "}
             </p>
           </Link>
           <button

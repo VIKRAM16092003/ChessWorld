@@ -24,6 +24,10 @@ import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
+<<<<<<< HEAD
+import Tournment from './Pages/Tournment';
+import AddMoney from './Pages/AddMoney';
+=======
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import RazorPay from "./Pages/RazorPay";
@@ -31,6 +35,7 @@ import Round from "./Pages/RoundRobin";
 import Tournament from "./Pages/tournament";
 import Room from './Pages/WaitingRoom';
 import Classical from './Pages/Tournament_page/Classical'
+>>>>>>> ec2bdbe6b9393c542c7c2826c2c3605be1c68e30
 
 const App = () => {
   return (
@@ -50,12 +55,15 @@ const App = () => {
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
+        <Route path="/addmoney" element={<AddMoney/>}/>
+
         <Route path="/play" element={<StartGame/>}/>
          <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/freePlan" element={<FreePlan/>}/>
         <Route path="/basicPlan" element={<BasicPlan/>}/>
         <Route path="/premiumPlan" element={<PremiumPlan/>}/>
+         <Route path="/tournment" element={<Tournment/>}/>
         <Route path="/puzzles" element={<Puzzles/>}/>
         <Route path="/analyse" element={<Analyse/>}/>
         <Route path="/lesson" element={<Lesson/>}/>
