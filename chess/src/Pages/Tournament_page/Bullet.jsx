@@ -5,10 +5,10 @@ import { toast } from "sonner";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StartGame.css";
 
-function ClassicalGame() {
+function BulletGame() {
   const location = useLocation();
   const navigate = useNavigate();
-  const timer = location.state?.timer || 5400;
+  const timer = location.state?.timer || 60;
 
   const [game, setGame] = useState(new Chess());
   const [history, setHistory] = useState([]);
@@ -174,38 +174,17 @@ function ClassicalGame() {
  return (
   <div className="p-5 bg-blue-100 ">
     <div className="d-flex justify-content-between align-items-center mb-3">
-  <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
-    ← Back
-  </button>
-  {!isGameStarted && (
-    <div className="d-flex align-items-center gap-2">
-      <button className="btn btn-success" onClick={startGame}>
-        Start Game
+      <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
+        ← Back
       </button>
-      <button
-        className="btn btn-light"
-        onClick={() =>
-          alert(
-            `🎯 Instructions:\n
-1. Click "Start Game" to begin.\n
-2. You can drag and drop the pieces to make moves.\n
-3. You are playing against an AI that makes random moves.\n
-4. A timer is running—if your time runs out, you lose.\n
-5. Use the Restart button to reset the game.\n
-6. Chat with your opponent (or yourself) using the chat box.\n
-7. Enjoy classical chess gameplay!`
-          )
-        }
-        title="Instructions"
-      >
-        ℹ️
-      </button>
+      {!isGameStarted && (
+        <button className="btn btn-success" onClick={startGame}>
+          Start Game
+        </button>
+      )}
     </div>
-  )}
-</div>
 
-
-    <p className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-black px-4 py-2 rounded flex items-center gap-2">Classical Game</p>
+    <p className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-black px-4 py-2 rounded flex items-center gap-2">Bullet Game</p>
 
     <div className={`start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
       <div
@@ -243,7 +222,7 @@ function ClassicalGame() {
                 onMouseOverSquare={onMouseOverSquare}
                 onMouseOutSquare={() => setHighlightSquares({})}
                 customSquareStyles={highlightSquares}
-                boardWidth={500}
+                boardWidth={600}
                 customBoardStyle={{
                   borderRadius: "4px",
                   boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
@@ -270,7 +249,7 @@ function ClassicalGame() {
 <div className="d-flex justify-content-between mb-4 gap-2">
   <div className="bg-dark text-center p-2 rounded flex-fill mr-[10px]">
     <h4 className="text-white">White</h4>
-    <div className="text-white">
+    <div className="text-white ">
       {Math.floor(whiteTime / 60)}:{String(whiteTime % 60).padStart(2, "0")}
     </div>
   </div>
@@ -359,4 +338,4 @@ function ClassicalGame() {
   );
 }
 
-export default ClassicalGame;
+export default BulletGame;

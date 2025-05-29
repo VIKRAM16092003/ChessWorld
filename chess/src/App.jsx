@@ -24,7 +24,7 @@ import Terms from './Pages/Terms'
 import Privacy from './Pages/Privacy'
 import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
-import Tournment from './Pages/Tournment';
+import Tournament from './Pages/tournament';
 import AddMoney from './Pages/AddMoney';
 import Room from './Pages/WaitingRoom';
 import Classical from './Pages/Tournament_page/Classical'
@@ -32,7 +32,9 @@ import RazorPay from './Pages/RazorPay'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Round from './Pages/RoundRobin'
-import Tournament from './Pages/Tournment'
+import Bullet from './Pages/Tournament_page/Bullet'
+import ArmageddonGame from './Pages/Tournament_page/Armageddon';
+import Otb from './Pages/Tournament_page/Otb';
 
 const App = () => {
   return (
@@ -43,6 +45,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/room" element={<Room/>}/>
+        <Route path="/otb" element={<Otb/>}/>
+        <Route path="/armageddon" element={<ArmageddonGame/>}/>
+        <Route path="/bullet" element={<Bullet/>}/>
         <Route path="/classical" element={<Classical/>}/>
         <Route path="/pay" element={<RazorPay/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -60,7 +65,7 @@ const App = () => {
         <Route path="/freePlan" element={<FreePlan/>}/>
         <Route path="/basicPlan" element={<BasicPlan/>}/>
         <Route path="/premiumPlan" element={<PremiumPlan/>}/>
-         <Route path="/tournment" element={<Tournment/>}/>
+         <Route path="/tournament" element={<Tournament/>}/>
         <Route path="/puzzles" element={<Puzzles/>}/>
         <Route path="/analyse" element={<Analyse/>}/>
         <Route path="/lesson" element={<Lesson/>}/>

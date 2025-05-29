@@ -125,7 +125,7 @@ function Login() {
           </form>
 
           <div className="mt-4 text-center text-white">
-            <a href="#" className="underline hover:text-gray-300">
+            <a href="#" className="underline hover:text-gray-300 text-red-200">
               Forgot password?
             </a>
             <p className="pt-2">

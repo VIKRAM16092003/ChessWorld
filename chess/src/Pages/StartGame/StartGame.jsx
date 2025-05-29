@@ -9,7 +9,7 @@ function StartGame() {
   const location = useLocation();
   const navigate = useNavigate();
   
-   const timer = parseInt(location.state?.data || "0");
+   const timer = parseInt(location.state?.data || "300");
 
 
   const [game, setGame] = useState(new Chess());
