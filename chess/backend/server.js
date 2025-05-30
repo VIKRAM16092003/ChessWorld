@@ -2,56 +2,73 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-const { nanoid } = require('nanoid');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || '*',  // Replace '*' with your client URL in production
+  methods: ['GET', 'POST']
+}));
 
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
-    credentials: true,
-  },
+    origin: process.env.CLIENT_URL || '*',
+    methods: ['GET', 'POST']
+  }
 });
 
-const rooms = {};
+let rooms = {};
 
 io.on('connection', (socket) => {
-  console.log(`Socket connected: ${socket.id}`);
+  console.log(`User connected: ${socket.id}`);
 
   socket.on('create-room', () => {
-    const roomId = nanoid(6);
-    rooms[roomId] = { players: [socket.id] };
-    socket.join(roomId);
-    socket.emit('room-created', roomId);
-    console.log(`Room created: ${roomId}`);
+    try {
+      const roomId = Math.random().toString(36).substring(2, 8);
+      rooms[roomId] = [socket.id];
+      socket.join(roomId);
+      socket.emit('room-created', roomId);
+      io.to(roomId).emit('player-joined', rooms[roomId]);
+    } catch (error) {
+      console.error(`Error creating room: ${error.message}`);
+      socket.emit('error', 'An error occurred while creating the room.');
+    }
   });
 
   socket.on('join-room', (roomId) => {
-    const room = rooms[roomId];
-    if (room && room.players.length < 2) {
-      room.players.push(socket.id);
-      socket.join(roomId);
-      io.to(roomId).emit('player-joined', room.players);
-    } else {
-      socket.emit('room-error', 'Room not found or full');
+    if (!rooms[roomId]) {
+      socket.emit('room-error', 'Room does not exist.');
+      return;
     }
+    if (rooms[roomId].length >= 2) {
+      socket.emit('room-error', 'Room is full.');
+      return;
+    }
+    rooms[roomId].push(socket.id);
+    socket.join(roomId);
+    io.to(roomId).emit('player-joined', rooms[roomId]);
+  });
+
+  socket.on('move', ({ roomId, move }) => {
+    socket.to(roomId).emit('opponent-move', move);
   });
 
   socket.on('disconnect', () => {
-    for (const [roomId, room] of Object.entries(rooms)) {
-      room.players = room.players.filter(id => id !== socket.id);
-      if (room.players.length === 0) {
-        delete rooms[roomId];
-      } else {
-        io.to(roomId).emit('player-left', room.players);
+    for (const roomId in rooms) {
+      const index = rooms[roomId].indexOf(socket.id);
+      if (index !== -1) {
+        rooms[roomId].splice(index, 1);
+        io.to(roomId).emit('player-left', rooms[roomId]);
+        if (rooms[roomId].length === 0) {
+          delete rooms[roomId];
+        }
+        break;
       }
     }
-    console.log(`Socket disconnected: ${socket.id}`);
+    console.log(`User disconnected: ${socket.id}`);
   });
 });
 
 server.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+  console.log('Server is running on port 5000');
 });

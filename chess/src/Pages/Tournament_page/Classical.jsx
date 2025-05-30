@@ -4,6 +4,8 @@ import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StartGame.css";
+import Swal from 'sweetalert2';
+import bg from '../../assets/chessbgimg.jpg';
 
 function ClassicalGame() {
   const location = useLocation();
@@ -170,9 +172,36 @@ function ClassicalGame() {
       setChat("");
     }
   }
+  const showInstructions = () => {
+  Swal.fire({
+    icon: 'info',
+    title: '🎯 Instructions',
+    html: `
+      <ul style="text-align: left;">
+        <li>Click <strong>Start Game</strong> to begin.</li>
+        <li>Drag and drop pieces to make moves.</li>
+        <li>You play against an AI that makes random moves.</li>
+        <li>A timer is running—if it hits 0, you lose.</li>
+        <li>Use the <strong>Restart</strong> button to reset the game.</li>
+        <li>Chat with your opponent using the chat box.</li>
+        <li><strong>Enjoy classical chess gameplay!</strong></li>
+      </ul>
+    `,
+    confirmButtonText: 'Got it!',
+    customClass: {
+      popup: 'rounded-lg shadow-lg',
+    },
+  });
+};
 
  return (
-  <div className="p-5 bg-blue-100 ">
+  <div
+        className="p-5 bg-blue-100 min-h-screen"
+        style={{
+          background: `url(${bg}) no-repeat center center`,
+          backgroundSize: 'cover',
+        }}
+      >
     <div className="d-flex justify-content-between align-items-center mb-3">
   <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
     ← Back
@@ -183,23 +212,12 @@ function ClassicalGame() {
         Start Game
       </button>
       <button
-        className="btn btn-light"
-        onClick={() =>
-          alert(
-            `🎯 Instructions:\n
-1. Click "Start Game" to begin.\n
-2. You can drag and drop the pieces to make moves.\n
-3. You are playing against an AI that makes random moves.\n
-4. A timer is running—if your time runs out, you lose.\n
-5. Use the Restart button to reset the game.\n
-6. Chat with your opponent (or yourself) using the chat box.\n
-7. Enjoy classical chess gameplay!`
-          )
-        }
-        title="Instructions"
-      >
-        ℹ️
-      </button>
+  className="btn btn-light"
+  onClick={showInstructions}
+  title="Instructions"
+>
+  ℹ️
+</button>
     </div>
   )}
 </div>

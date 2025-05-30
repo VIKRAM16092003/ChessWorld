@@ -13,12 +13,12 @@ function ChessTournaments() {
     { name: 'Classical', desc: 'Long games (90+ minutes per player)', icon: '⏱️', link: '/classical' },
     { name: 'Blitz', desc: '3–5 minutes per player. Each play should play for 3-5 minutes', icon: '⚡' },
     { name: 'Bullet', desc: '1 minute or less per player. Each player should play for 1 minutes', icon: '🔥',link:'/bullet' },
-    { name: 'Armageddon', desc: 'White gets more time, Black wins with a draw', icon: '🎯',link:'/armageddon' },
+   
   ];
 
   const modes = [
     { name: 'Over-the-Board (OTB)', desc: 'Physical presence at a venue. Game is about like physical', icon: '📍' ,link:'/otb'},
-    { name: 'Online', desc: 'Played through platforms like Chess.com', icon: '💻' },
+    { name: 'Online', desc: 'Played through platforms like Chess.com', icon: '💻',link:'/online' },
     { name: 'Armageddon', desc: 'Same rule: White gets more time, Black wins with a draw', icon: '🎯',link:'/armageddon' },
   ];
 

@@ -4,6 +4,8 @@ import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StartGame.css";
+import Swal from 'sweetalert2';
+import bg from '../../assets/chessbgimg.jpg';
 
 function ArmageddonGame() {
   const location = useLocation();
@@ -131,19 +133,50 @@ function ArmageddonGame() {
       setChat("");
     }
   };
+  const showInstructions = () => {
+    Swal.fire({
+      icon: 'info',
+      title: '🎯 Instructions',
+      html: `
+        <ul style="text-align: left;">
+          <li>Click <strong>Start Game</strong> to begin.</li>
+          <li>Drag and drop pieces to make moves.</li>
+          <li>You play against an AI that makes random moves.</li>
+          <li>A timer is running—if it hits 0, you lose.</li>
+          <li>Use the <strong>Restart</strong> button to reset the game.</li>
+          <li>Chat with your opponent using the chat box.</li>
+          <li><strong>Enjoy classical chess gameplay!</strong></li>
+        </ul>
+      `,
+      confirmButtonText: 'Got it!',
+      customClass: {
+        popup: 'rounded-lg shadow-lg',
+      },
+    });
+  };
 
   return (
-    <div className="p-5 bg-blue-100">
+    <div className="p-5 "style={{background:`url(${bg})`}}>
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
-          ← Back
-        </button>
-        {!isGameStarted && (
-          <button className="btn btn-success" onClick={startGame}>
-            Start Game
-          </button>
-        )}
-      </div>
+  <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
+    ← Back
+  </button>
+
+  <div className="d-flex align-items-center gap-2">
+    {!isGameStarted && (
+      <button className="btn btn-success me-2" onClick={startGame}>
+        Start Game
+      </button>
+    )}
+    <button
+      className="btn btn-light"
+      onClick={showInstructions}
+      title="Instructions"
+    >
+      ℹ️
+    </button>
+  </div>
+</div>
 
       <p className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-black px-4 py-2 rounded flex items-center gap-2">
         Armageddon Game

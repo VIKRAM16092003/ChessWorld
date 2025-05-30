@@ -4,7 +4,6 @@ import About from './Pages/About'
 import {Route, Routes} from "react-router-dom";
 import Home from './Pages/Home/Home';
 import { Toaster } from 'sonner'
-import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Contact from './Pages/Contact';
 import { FreePlan } from './Pages/FreePlan';
@@ -26,7 +25,6 @@ import Testimonials from './Testimonials'
 import SuggestedPuzzles from './Pages/SuggestedPuzzle';
 import Tournament from './Pages/tournament';
 import AddMoney from './Pages/AddMoney';
-import Room from './Pages/WaitingRoom';
 import Classical from './Pages/Tournament_page/Classical'
 import RazorPay from './Pages/RazorPay'
 import Login from './Pages/Login'
@@ -35,6 +33,8 @@ import Round from './Pages/RoundRobin'
 import Bullet from './Pages/Tournament_page/Bullet'
 import ArmageddonGame from './Pages/Tournament_page/Armageddon';
 import Otb from './Pages/Tournament_page/Otb';
+import WaitingRoom from './components/WaitingRoom';
+import ChessGame from './components/ChessGame';
 
 const App = () => {
   return (
@@ -44,8 +44,9 @@ const App = () => {
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/room" element={<Room/>}/>
         <Route path="/otb" element={<Otb/>}/>
+        <Route path="/online" element={<WaitingRoom />} />
+        <Route path="/game/:roomId" element={<ChessGame />} />
         <Route path="/armageddon" element={<ArmageddonGame/>}/>
         <Route path="/bullet" element={<Bullet/>}/>
         <Route path="/classical" element={<Classical/>}/>
@@ -58,7 +59,6 @@ const App = () => {
         <Route path="/test" element={<Testimonials/>}/>
         <Route path="/terms" element={<Terms/>}/>
         <Route path="/addmoney" element={<AddMoney/>}/>
-
         <Route path="/play" element={<StartGame/>}/>
          <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
