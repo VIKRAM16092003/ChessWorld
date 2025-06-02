@@ -8,15 +8,14 @@ const Registerpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
-  const [alertType, setAlertType] = useState(""); // "success" or "error"
-
+  const [alertType, setAlertType] = useState(""); 
   const showAlert = (message, type) => {
     setAlertMessage(message);
     setAlertType(type);
     setTimeout(() => {
       setAlertMessage("");
       setAlertType("");
-    }, 3000); // disappears after 3 seconds
+    }, 3000);
   };
 
   const handleRegister = async (e) => {
