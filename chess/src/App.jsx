@@ -28,7 +28,7 @@ import AddMoney from './Pages/AddMoney';
 import Classical from './Pages/Tournament_page/Classical'
 import RazorPay from './Pages/RazorPay'
 import Login from './Pages/Login'
-import Register from './Pages/Register'
+import RegisterPage from './Pages/RegisterPage'
 import Round from './Pages/RoundRobin'
 import Bullet from './Pages/Tournament_page/Bullet'
 import ArmageddonGame from './Pages/Tournament_page/Armageddon';
@@ -53,7 +53,7 @@ const App = () => {
         <Route path="/pay" element={<RazorPay/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/privacy" element={<Privacy/>}/>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/SuggestedPuzzles" element={<SuggestedPuzzles/>}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/test" element={<Testimonials/>}/>
