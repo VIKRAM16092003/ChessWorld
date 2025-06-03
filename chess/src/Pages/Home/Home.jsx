@@ -35,7 +35,7 @@ const Home = () => {
                 <Link
                   key={i}
                   to={`/${path}`}
-                  className="border-[white] bg-[#047857] font-[700] hover:bg-[#065f46] hover:text-white px-4 py-2 rounded transition"
+                  className="border-[white] bg-green-700 font-[700] hover:bg-[#065f46] hover:text-white px-4 py-2 rounded transition"
                   style={{ textDecoration: "none", color: "#F2F2F2" }}
                 >
                   {path.charAt(0).toUpperCase() + path.slice(1)}
@@ -62,7 +62,7 @@ const Home = () => {
               </p>
               <Link to="/tournament">
               <button
-                className="bg-[#047857] hover:bg-[#065f46] text-white font-bold px-6 py-3 rounded transition"
+                className="bg-green-700 hover:bg-[#065f46] text-white font-bold px-6 py-3 rounded transition"
               >
                 Get Start Analysis
               </button></Link>

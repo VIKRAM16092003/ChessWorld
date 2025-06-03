@@ -35,6 +35,7 @@ import ArmageddonGame from './Pages/Tournament_page/Armageddon';
 import Otb from './Pages/Tournament_page/Otb';
 import WaitingRoom from './components/WaitingRoom';
 import ChessGame from './components/ChessGame';
+// import Tactics from './Pages/Tactics';
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/otb" element={<Otb/>}/>
+        {/* <Route path="/tactics" element={<Tactics/>}/> */}
         <Route path="/online" element={<WaitingRoom />} />
         <Route path="/game/:roomId" element={<ChessGame />} />
         <Route path="/armageddon" element={<ArmageddonGame/>}/>
