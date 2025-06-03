@@ -183,7 +183,7 @@ function MultiplayerGame() {
         <button className="btn btn-dark" onClick={() => navigate("/tournament")}>
           ← Back
         </button>
-        <h3 className="text-white text-shadow-lg m-0">
+        <h3 className="absolute text-shadow-lg top-12 shadow-lg h3 right-120 z-20 text-white px-4 py-2 rounded flex items-center gap-2">
           You are: {playerSide === "w" ? "White" : "Black"}
         </h3>
         <button className="btn btn-light" onClick={showInstructions}>

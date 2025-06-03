@@ -1,5 +1,6 @@
 // TournamentApp.js
 import React, { useState } from 'react';
+import StartGame from './StartGame/StartGame';
 
 const playersList = ['Alice', 'Bob', 'Charlie', 'Dave'];
 

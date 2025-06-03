@@ -3,8 +3,8 @@ import bg from '../assets/chessbgimg.jpg';
 
 function ChessTournaments() {
   const formats = [
-    { name: 'Round Robin', desc: 'Every player plays against every other player', icon: '🔁' },
-    { name: 'Swiss System', desc: 'Players paired each round based on score', icon: '🔀' },
+    { name: 'Round Robin', desc: 'Every player plays against every other player', icon: '🔁',link:'/round' },
+    { name: 'Swiss System', desc: 'Players paired each round based on score', icon: '🔀',link:'/bullet' },
     { name: 'Match Play', desc: 'Two players face off over multiple games', icon: '⚔️' },
     { name: 'Team Tournaments', desc: 'Teams (schools, clubs, countries) compete', icon: '👥' },
   ];
