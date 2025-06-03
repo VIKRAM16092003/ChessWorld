@@ -28,7 +28,7 @@ import AddMoney from './Pages/AddMoney';
 import Classical from './Pages/Tournament_page/Classical'
 import RazorPay from './Pages/RazorPay'
 import Login from './Pages/Login'
-import RegisterPage from './Pages/RegisterPage'
+import RegisterPage from './Pages/Register'
 import Round from './Pages/RoundRobin'
 import Bullet from './Pages/Tournament_page/Bullet'
 import ArmageddonGame from './Pages/Tournament_page/Armageddon';
