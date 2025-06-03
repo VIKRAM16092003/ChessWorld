@@ -26,7 +26,7 @@ const Paymentpage = () => {
             </p>
           </Link>
           <button
-            className="btn btn-dark mt-3  mb-3 h-[50px] right"
+            className="btn btn-dark mt-3 bg-green-700 hover:bg-green-800 mb-3 h-[50px] right"
             onClick={() => navigate("/")}
           >
             Back to Home

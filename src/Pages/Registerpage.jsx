@@ -1,54 +1,62 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import chessbgimg from "../assets/chessbgimg.jpg";
 import logo from "../assets/logo.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
-const Registerpage = () => {
-    const navigate = useNavigate();
+  useEffect(() => {
+    fetch("http://localhost:8081/log")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Fetched users:", data);
+        setUsers(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
-    const [emailOrPhone, setEmailOrPhone] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setError("");
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
 
-      // Basic validation
-      if (!emailOrPhone.trim()) {
-        setError("Please enter your email or phone number");
-        return;
-      }
-
-      if (!password) {
-        setError("Please enter your password");
-        return;
-      }
-
-      setIsLoading(true);
-
-      // Simulate API call
-      setTimeout(() => {
-        setIsLoading(false);
-        // For demo purposes, any non-empty password will work
-        onLogin();
-      }, 1000);
-    };
-
-
+    if (user) {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "Welcome back!",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate("/");
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Incorrect email or password.",
+      });
+    }
+  };
 
   return (
-    <>
-      <div
-        className="bg-grey/40 bg-cover bg-center h-[100vh]"
-        style={{ backgroundImage: `url(${chessbgimg})` }}
-      >
-        <div class="flex flex-row justify-between mb-2 px-[30px]">
+    <div
+      className="min-h-screen bg-cover bg-center flex flex-col relative"
+      style={{ backgroundImage: `url(${chessbgimg})` }}
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center px-[30px] py-4">
+        <div class="flex w-[90vw] flex-row justify-between mb-2  px-[30px]">
           <Link
             to="/"
-            className="flex items-center space-x-3 text-white font-semibold"
+            className="flex items-center space-x-3 text-white font-semibold p-4"
             style={{ textDecoration: "none" }}
           >
             <img
@@ -62,85 +70,100 @@ const Registerpage = () => {
             >
               CHESS{" "}
               <span
-                class="text-white font-[300] pl-2 tracking-[-1px] text-[20px]
+                class="text-white font-[300] tracking-[-1px] pl-2 text-[20px]
                 "
                 style={{ letterSpacing: "-3px" }}
               >
                 WORLD{" "}
               </span>{" "}
             </p>
-            <Link to="/tournaments">Tournaments</Link>
-            <Link to="/blitzgame">Blitzgame</Link>
           </Link>
           <button
-            className="btn btn-dark mt-3  mb-3 h-[50px] right"
+            className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+            style={{ borderRadius: "10px", marginTop: "30px" }}
             onClick={() => navigate("/")}
           >
             Back to Home
           </button>
         </div>
-        <p
-          class="text-white text-center font-sans text-[23px] pb-2
-         font-[600]"
-        >
-          {" "}
-          Register to play Tournaments
-        </p>
-        <div class="w-[30vw] ml-[35vw] flex flex-col px-[154px] py-[50px] bg-[#dae2e6]/20 h-[550px] rounded-[10px] shadow-md mt-[10px] mb-[10px]">
-          <div className="login-card">
-            <h1 className="login-title">Chess Master Login</h1>
+      </div>
 
-            {error && <div className="error-message">{error}</div>}
+      {/* Title */}
+      <p className="text-white text-center text-[23px] font-semibold mb-4">
+        Login to your account
+      </p>
 
-            <form onSubmit={handleSubmit} className="login-form">
-              <div className="form-group">
-                <label htmlFor="emailOrPhone">Email or Phone Number</label>
-                <input
-                  type="text"
-                  id="emailOrPhone"
-                  value={emailOrPhone}
-                  onChange={(e) => setEmailOrPhone(e.target.value)}
-                  placeholder="Enter your email or phone"
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="form-input"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="login-button"
-                disabled={isLoading}
+      {/* Form Container */}
+      <div className="flex-grow flex justify-center items-center">
+        <div className="bg-[#dae2e6]/20 backdrop-blur-md p-10 rounded-[10px] shadow-lg w-full max-w-md">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block mb-2 font-bold"
               >
-                {isLoading ? "Logging in..." : "Login"}
-              </button>
-            </form>
-
-            <div className="login-footer">
-              <a href="#" className="forgot-password">
-                Forgot password?
-              </a>
-              <p className="signup-text">
-                Don't have an account?{" "}
-                <a href="#" className="signup-link">
-                  Sign up
-                </a>
-              </p>
+                Email
+              </label>
+              <input
+                id="email"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full p-3 h-[50px] rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white bg-transparent"
+                required
+              />
             </div>
+
+            <div>
+              <label
+                htmlFor="password"
+                className="text-white block mb-2 font-bold"
+              >
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full p-3 h-[50px] rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white bg-transparent"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-black text-white p-2 rounded-md font-semibold hover:bg-white hover:text-black transition"
+            >
+              Login
+            </button>
+          </form>
+
+          <div className="mt-4 text-center text-white">
+            <a href="#" className="underline hover:text-gray-300">
+              Forgot password?
+            </a>
+            <p className="pt-2">
+              Don't have an account?{" "}
+              <a
+                href="/register"
+                className="text-black underline hover:text-gray-700"
+              >
+                Sign up
+              </a>
+            </p>
           </div>
         </div>
       </div>
-    </>
+
+      {/* Footer */}
+      <footer className="text-center text-white py-4">
+        © 2025 Chess World. All rights reserved.
+      </footer>
+    </div>
   );
-};
-export default Registerpage;
+}
+
+export default Login;

@@ -81,6 +81,37 @@ const board6 = [
   ["", "", "", "", "", "", "", ""],
   ["", "", "", "", "", "", "", ""],
 ];
+const board7 = [
+  ["", "", "", "", wBishop, "", bKing, ""],
+  [bPawn, "", "", "", "", bPawn, bPawn, ""],
+  ["", bPawn, "", "", "", bQueen, bKnight, bPawn],
+  ["", "", bBishop, wRook, "", "", "", ""],
+  [wQueen, "", "", "", "", "", "", ""],
+  ["", "", "", "", "", wPawn, wPawn, ""],
+  ["", "", "", "", "", bRook, "", wPawn],
+  ["", "", "", "", "", wRook, "", wKing],
+];
+const board8 = [
+  [bRook, bKnight, bBishop, bQueen, bKing, bBishop, "", bRook],
+  [bPawn, bPawn, "", "", bPawn, wBishop, "", bPawn],
+  ["", "", "", "", "", bKnight, bPawn, ""],
+  ["", "", wPawn, "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", wKnight, "", "", "", "", ""],
+  [wPawn, wPawn, wPawn, "", "", wPawn, wPawn, wPawn],
+  [wRook, "", wBishop, wQueen, wKing, "", wKnight, wRook],
+];
+const board9 = [
+  ["", "", "", "", "", "", "", bRook],
+  ["", "", "", "", "", "", "", bPawn],
+  ["", "", "", "", bKing, bBishop, bPawn, ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", wBishop, "", "", wPawn, wPawn],
+  ["", "", "", "", "", wRook, wKing, ""],
+];
+
 // Add more boards if needed...
 
 const highlight1 = [
@@ -97,6 +128,9 @@ const highlight5 = [
   [2, 3],
 ];
 const highlight6 = [[2, 3]];
+const highlight7 = [[3, 2]];
+const highlight8 = [[0, 3]];
+const highlight9 = [[2, 5]];
 
 const highlights = [
   highlight1,
@@ -105,6 +139,9 @@ const highlights = [
   highlight4,
   highlight5,
   highlight6,
+  highlight7,
+  highlight8,
+  highlight9,
 ];
 
 const highlightPieces = [
@@ -114,6 +151,9 @@ const highlightPieces = [
   [3, 4],
   [5, 6],
   [3, 4],
+  [3, 3],
+  [7, 3],
+  [7, 5],
 ];
 
 const tacticgHeading = [
@@ -123,13 +163,26 @@ const tacticgHeading = [
   "DISCOVERED ATTACK",
   "DOUBLE CHECK",
   "OPPOSITION",
+  "OVERLOADING",
+  "DEFLACTION",
+  "ATTRACTION",
 ];
 
 const Tacticspage = () => {
   const navigate = useNavigate();
   const [selectedBoardIndex, setSelectedBoardIndex] = useState(null);
 
-  const boards = [board1, board2, board3, board4, board5, board6];
+  const boards = [
+    board1,
+    board2,
+    board3,
+    board4,
+    board5,
+    board6,
+    board7,
+    board8,
+    board9,
+  ];
   // about content
   const content1 = [
     [
@@ -188,14 +241,48 @@ const Tacticspage = () => {
       "Opposition is crucial in king and pawn endgames. Gaining the opposition can force the opposing king to give ground, allowing your king to advance and support pawn promotion.",
     ],
   ];
-  const content = [content1, content2, content3, content4, content5, content6];
+  const content7 = [
+    [
+      "Overloading is a powerful tactical motif in chess where a single piece is assigned too many defensive duties, making it vulnerable to tactical exploitation.",
+    ],
+    [
+      " When a piece is overloaded, it cannot adequately defend all the threats aimed at it, leading to a breakdown in its defensive responsibilities. For example, a queen might be defending both a key checkmate square and a hanging piece.",
+    ],
+  ];
+  const content8 = [
+    [
+      "Deflection is a powerful chess tactic used to force an opponent’s piece to move away from a crucial square, rank, or file, thereby weakening their position or allowing a winning combination. ",
+    ],
+    [
+      "The idea is to lure or deflect a defending piece away from its key duty—such as guarding a checkmate square, protecting another piece, or blocking an attack.",
+    ],
+  ];
+  const content9 = [
+    [
+      "Attraction is a chess tactic where a player deliberately lures an opponent’s piece—usually the king or a key defender—onto a specific square to set up a follow-up tactic such as a fork, pin, skewer, or checkmate. ",
+    ],
+    [
+      "The key idea is to attract the piece to a vulnerable position where it can be exploited. For example, a sacrifice might attract the enemy king into the open, making it a target for a mating net.",
+    ],
+  ];
+  const content = [
+    content1,
+    content2,
+    content3,
+    content4,
+    content5,
+    content6,
+    content7,
+    content8,
+    content9,
+  ];
 
   return (
     <div
-      className="bg-black/50  bg-cover bg-center h-[250vh]"
+      className="bg-black/50  bg-cover bg-center h-[350vh]"
       style={{ backgroundImage: `url(${chessbgimg})` }}
     >
-      <div className="bg-[#5b646d]/50 h-[250vh]">
+      <div className="bg-[#5b646d]/50 h-[350vh]">
         {/* header */}
         <div class="flex flex-row justify-between mb-2  px-[30px]">
           <Link
@@ -223,7 +310,7 @@ const Tacticspage = () => {
             </p>
           </Link>
           <button
-            className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+            className="w-[130px]  rounded-[10px] bg-green-700 hover:bg-green-800 text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
             style={{ borderRadius: "10px", marginTop: "30px" }}
             onClick={() => navigate("/")}
           >
@@ -231,10 +318,10 @@ const Tacticspage = () => {
           </button>
         </div>
 
-        <div class="flex flex-row mt-[20px] items-center justify-center gap-4">
+        <div class="flex flex-row mt-[0px] items-center justify-center gap-4">
           {/* <hr class="w-[28vw] border-[#EAE4D5]" style={{ color: "#fff" }} /> */}
           <p
-            class="whitespace-nowrap text-justify text-[#F2F2F2] font-[800] text-[30px]"
+            class="whitespace-nowrap text-justify bg-black/10 px-3 shadow-md rounded-[8px] text-[#F2F2F2] font-[800] text-[30px]"
             style={{ fontFamily: "Anton sans-serif" }}
           >
             {" "}
@@ -244,7 +331,7 @@ const Tacticspage = () => {
         </div>
 
         {/* boardcontainer */}
-        <div className="h-[1550px] border-[1px] border-[#EAE4D5] rounded-[10px] pt-5 ml-[5vw] pl-[10px] pt-2 mr-[5vw] bg-[#dae2e6]/20 p-1 mt-4 flex flex-wrap justify-evenly ">
+        <div className="h-[2350px] border-[1px] border-[#EAE4D5] rounded-[10px] pt-5 ml-[5vw] pl-[10px] pt-2 mr-[5vw] bg-[#dae2e6]/20 p-1 mt-4 flex flex-wrap justify-evenly ">
           {boards.map((board, index) => (
             <div
               key={index}
@@ -261,6 +348,97 @@ const Tacticspage = () => {
               />
             </div>
           ))}
+          <div
+            style={{
+              flex: "1",
+              minWidth: "250px",
+              padding: "10px",
+              textAlign: "center",
+            }}
+          >
+            <div className="player-box">
+              <h4>White</h4>
+              <div style={{ fontSize: "28px" }}>
+                {Math.floor(whiteTime / 60)}:
+                {String(whiteTime % 60).padStart(2, "0")}
+              </div>
+            </div>
+            <div className="player-box">
+              <h4>Black</h4>
+              <div style={{ fontSize: "28px", marginBottom: "20px" }}>
+                {Math.floor(blackTime / 60)}:
+                {String(blackTime % 60).padStart(2, "0")}
+              </div>
+            </div>
+
+            {result && (
+              <div
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  marginBottom: "20px",
+                }}
+              >
+                <strong>{result}</strong>
+              </div>
+            )}
+
+            <button
+              onClick={resetGame}
+              className="btn btn-outline-dark"
+              style={{ marginBottom: "10px" }}
+            >
+              Restart Game
+            </button>
+
+            <div style={{ marginTop: "20px", textAlign: "left" }}>
+              <h5>Chat</h5>
+              <div
+                style={{
+                  height: "150px",
+                  overflowY: "scroll",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                  padding: "10px",
+                  backgroundColor: isDarkMode ? "#222" : "#f9f9f9",
+                  color: isDarkMode ? "white" : "black",
+                  marginBottom: "10px",
+                }}
+              >
+                {chatLog.length === 0 && <div>No messages yet.</div>}
+                {chatLog.map((msg, i) => (
+                  <div key={i} style={{ marginBottom: "5px" }}>
+                    {msg}
+                  </div>
+                ))}
+              </div>
+
+              <input
+                type="text"
+                value={chat}
+                onChange={(e) => setChat(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSendChat()}
+                placeholder="Type your message"
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                }}
+                disabled={!isGameStarted}
+              />
+              <button
+                onClick={handleSendChat}
+                disabled={!chat.trim() || !isGameStarted}
+                className="btn btn-primary"
+                style={{ marginTop: "5px", width: "100%" }}
+              >
+                Send
+              </button>
+            </div>
+          </div>
 
           {selectedBoardIndex !== null && (
             <div

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useNavigate } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { toast } from "sonner";
-import {Link} from 'react-router-dom'
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./StartGame.css";
 import logo from "../../assets/logo.jpg";
 
@@ -79,7 +79,9 @@ function StartGame() {
     setHistory(gameInstance.history());
 
     if (gameInstance.isCheckmate()) {
-      toast.success(`Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`);
+      toast.success(
+        `Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`
+      );
       setResult(`Checkmate! ${currentTurn === "w" ? "White" : "Black"} wins!`);
     } else if (gameInstance.isStalemate()) {
       toast.success("Stalemate! It's a draw.");
@@ -91,7 +93,13 @@ function StartGame() {
   };
 
   const onDrop = (source, target) => {
-    if (!isGameStarted || game.isGameOver() || result || whiteTime === 0 || blackTime === 0)
+    if (
+      !isGameStarted ||
+      game.isGameOver() ||
+      result ||
+      whiteTime === 0 ||
+      blackTime === 0
+    )
       return false;
 
     const piece = game.get(source);

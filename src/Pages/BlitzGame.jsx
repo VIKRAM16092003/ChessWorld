@@ -177,279 +177,339 @@ function BlitzGame() {
 
   return (
     <div
-      className="min-h-screen w-full bg-cover bg-center bg-[#EFEEEA] font-sans"
+      className="min-h-screen w-full  bg-cover bg-center pb-[50px] bg-[#EFEEEA] font-sans"
       style={{ backgroundImage: `url(${chessbgimg})` }}
     >
-      <div class="flex flex-row justify-between mb-2">
-        <Link
-          to="/"
-          className="flex items-center space-x-3 text-white font-semibold"
-          style={{ textDecoration: "none" }}
-        >
-          <img
-            src={logo}
-            alt="Company Logo"
-            className="w-20 h-20 rounded-full object-cover"
-          />
-          <p
-            className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
-            style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
+      <div className="bg[#5b646d]/30">
+        <div class="flex flex-row justify-between mb-2  px-[30px]">
+          <Link
+            to="/"
+            className="flex items-center space-x-3 text-white font-semibold p-4"
+            style={{ textDecoration: "none" }}
           >
-            CHESS{" "}
-            <span
-              class="text-white font-[300] pl-2 tracking-[-1px] text-[20px]
-                "
-              style={{ letterSpacing: "-3px" }}
+            <img
+              src={logo}
+              alt="Company Logo"
+              className="w-20 h-20 rounded-full object-cover"
+            />
+            <p
+              className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
+              style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
             >
-              WORLD{" "}
-            </span>{" "}
-          </p>
-        </Link>
-        <button
-          className="btn btn-dark mt-3  mb-3 h-[50px] right"
-          onClick={() => navigate("/")}
-        >
-          Back to Home
-        </button>
-      </div>
-      <div
-        className={`bg-black/10 start-game-wrapper ${
-          isDarkMode ? "dark-mode" : ""
-        }`}
-      >
-        <div
-          style={{
-            fontFamily: "sans-serif",
-            padding: 20,
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1400px",
-              // background: isDarkMode
-              //   ? "#1e1e1e"
-              //   : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+              CHESS{" "}
+              <span
+                class="text-white font-[300] tracking-[-1px] pl-2 text-[20px]
+                        "
+                style={{ letterSpacing: "-3px" }}
+              >
+                WORLD{" "}
+              </span>{" "}
+            </p>
+          </Link>
+          <button
+            className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+            style={{ borderRadius: "10px", marginTop: "30px" }}
+            onClick={() => navigate("/")}
+          >
+            Back to Home
+          </button>
+        </div>
 
-              borderRadius: "12px",
-              // boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
-              padding: "20px",
-              color: isDarkMode ? "white" : "black",
+        <div
+          className={` bg-[#dae2e6]/20 border-[px] mt-3 border-[]  pb-[70px] w-[80vw] ml-[10vw] shadow-md rounded-[10px] start-game-wrapper ${
+            isDarkMode ? "dark-mode" : ""
+          }`}
+        >
+          <h1
+            style={{
+              fontSize: "28px",
+              color: "#fff",
+              textAlign: "center",
+              paddingTop: "20px",
+              fontFamily: "Anton sans-serif",
+              fontWeight: "700",
             }}
           >
-            {/* Top Navigation */}
+            Blitz Game
+          </h1>
+          <div
+            style={{
+              fontFamily: "sans-serif",
+
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-evenly",
-                marginBottom: 20,
-                flexWrap: "wrap",
-                gap: "10px",
+                width: "100%",
+                maxWidth: "1400px",
+                // background: isDarkMode
+                //   ? "#1e1e1e"
+                //   : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+
+                borderRadius: "12px",
+                // boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+                // padding: "20px",
+                color: isDarkMode ? "white" : "black",
               }}
             >
-              {["Play"].map((btn) => (
-                <button
-                  key={btn}
-                  className="btn btn-dark"
-                  onClick={
-                    btn === "Play"
-                      ? startGame
-                      : btn === "Dark Mode"
-                      ? () => setIsDarkMode((prev) => !prev)
-                      : () => {
-                          const routeMap = {
-                            Puzzles: "/puzzles",
-                            Lessons: "/lesson",
-                            Analysis: "/analyse",
-                          };
-                          const route = routeMap[btn];
-                          if (route) navigate(route);
-                        }
-                  }
-                  disabled={btn === "Play" && isGameStarted}
-                >
-                  {btn}
-                </button>
-              ))}
-            </div>
-
-            {/* Game Body */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "20px",
-                flexWrap: "wrap",
-              }}
-            >
-              {/* Chessboard */}
-              <div style={{ flex: "none", textAlign: "center" }}>
-                <Chessboard
-                  position={game.fen()}
-                  onPieceDrop={onDrop}
-                  onMouseOverSquare={onMouseOverSquare}
-                  onMouseOutSquare={() => setHighlightSquares({})}
-                  customSquareStyles={highlightSquares}
-                  boardWidth={600}
-                  customBoardStyle={{
-                    borderRadius: "4px",
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-                  }}
-                  customDarkSquareStyle={{
-                    backgroundColor: "#C0C0C0", // Silver
-                  }}
-                  customLightSquareStyle={{
-                    backgroundColor: "#FFFFFF", // White
-                  }}
-                  arePiecesDraggable={
-                    isGameStarted && !game.isGameOver() && !result
-                  }
-                />
-                {isGameStarted && gameMode === "ai" && (
-                  <h5 style={{ marginTop: "10px" }}>
-                    You are playing as: {playerSide === "w" ? "White" : "Black"}
-                  </h5>
-                )}
-              </div>
-
-              {/* Timer and Chat Panel */}
+              {/* Top Navigation */}
               <div
                 style={{
-                  flex: "1",
-                  minWidth: "250px",
-                  padding: "10px",
-                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  marginBottom: 20,
+                  flexWrap: "wrap",
+                  gap: "10px",
+                }}
+              ></div>
+
+              {/* Game Body */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+
+                  gap: "20px",
+                  flexWrap: "wrap",
                 }}
               >
-                <div className="player-box flex flex-row">
-                  <div className="border-[1px] p-[50px] border-[#fff]">
-                    <h4>White</h4>
-                    <div style={{ fontSize: "28px" }}>
-                      {Math.floor(whiteTime / 60)}:
-                      {String(whiteTime % 60).padStart(2, "0")}
-                    </div>
-                  </div>
+                {/* Chessboard */}
+                <div style={{ flex: "none", textAlign: "center" }}>
+                  <Chessboard
+                    position={game.fen()}
+                    onPieceDrop={onDrop}
+                    onMouseOverSquare={onMouseOverSquare}
+                    onMouseOutSquare={() => setHighlightSquares({})}
+                    customSquareStyles={highlightSquares}
+                    boardWidth={600}
+                    customBoardStyle={{
+                      borderRadius: "4px",
+                      boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+                    }}
+                    customDarkSquareStyle={{
+                      backgroundColor: "#b58863", // Silver
+                    }}
+                    customLightSquareStyle={{
+                      backgroundColor: "#f0d9b5", // White
+                    }}
+                    arePiecesDraggable={
+                      isGameStarted && !game.isGameOver() && !result
+                    }
+                  />
+                  {isGameStarted && gameMode === "ai" && (
+                    <h5 style={{ marginTop: "10px" }}>
+                      You are playing as:{" "}
+                      {playerSide === "w" ? "White" : "Black"}
+                    </h5>
+                  )}
+                </div>
 
-                  <div className="player-box">
-                    <div className="border-[1px] p-[50px] border-[#fff]">
-                      <h4>Black</h4>
-                      <div style={{ fontSize: "28px", marginBottom: "20px" }}>
-                        {Math.floor(blackTime / 60)}:
-                        {String(blackTime % 60).padStart(2, "0")}
+                {/* Timer and Chat Panel */}
+                <div
+                  style={{
+                    minWidth: "250px",
+                    padding: "10px",
+                    textAlign: "center",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                >
+                  <div className="player-box w-[368px] flex flex-row justify-between">
+                    <div className="border-[0px] bg-white/20 shadow-md h-[120px] w-[170px] border-[#fff] rounded-[10px]">
+                      <h4
+                        className="text-center text-[#fff] mt-2 mb-3 pb-1 border-b-[2px] border-[#fff]"
+                        style={{
+                          color: "#fff",
+                          fontWeight: "600",
+                          borderColor: "grey",
+                          fontSize: "19px",
+                        }}
+                      >
+                        Timer for White
+                      </h4>
+                      <div
+                        style={{
+                          fontSize: "28px",
+                          marginTop: "23px",
+                          fontWeight: "700",
+                        }}
+                      >
+                        {Math.floor(whiteTime / 60)}:
+                        {String(whiteTime % 60).padStart(2, "0")}
+                      </div>
+                    </div>
+
+                    <div className="player-box">
+                      <div className="border-[0px] bg-white/20 shadow-md h-[120px] w-[170px] border-[#fff] rounded-[10px]">
+                        <h4
+                          className="text-center  border-b-[2px]  pt-1 pb-1  border-[#fff]"
+                          style={{
+                            color: "#fff",
+                            fontWeight: "600",
+                            borderColor: "grey",
+                            fontSize: "19px",
+                          }}
+                        >
+                          Timer for Black
+                        </h4>
+                        <div
+                          style={{
+                            fontSize: "28px",
+                            marginTop: "23px",
+                            fontWeight: "700",
+                          }}
+                        >
+                          {Math.floor(blackTime / 60)}:
+                          {String(blackTime % 60).padStart(2, "0")}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {result && (
-                  <div
-                    style={{
-                      backgroundColor: "red",
-                      color: "white",
-                      padding: "10px",
-                      borderRadius: "8px",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    <strong>{result}</strong>
-                  </div>
-                )}
-
-                <button
-                  onClick={resetGame}
-                  className="btn btn-outline-dark"
-                  style={{ marginBottom: "10px" }}
-                >
-                  Restart Game
-                </button>
-
-                <div style={{ marginTop: "20px", textAlign: "left" }}>
-                  <h5>Chat</h5>
-                  {/* Move History Panel */}
-                  <div
-                    style={{
-                      flex: "0.5",
-                      minWidth: "180px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <h4>Moves</h4>
+                  {result && (
                     <div
                       style={{
-                        height: "200px",
-                        overflowY: "scroll",
-                        border: "1px solid gray",
-                        borderRadius: "8px",
+                        backgroundColor: "red",
+                        color: "white",
                         padding: "10px",
-                        marginBottom: "15px",
+                        borderRadius: "8px",
+                        marginBottom: "20px",
                       }}
                     >
-                      <table
-                        style={{ width: "100%", borderCollapse: "collapse" }}
-                      >
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>White</th>
-                            <th>Black</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {history
-                            .reduce((rows, move, i) => {
-                              if (i % 2 === 0)
-                                rows.push([Math.floor(i / 2) + 1, move, null]);
-                              else rows[rows.length - 1][2] = move;
-                              return rows;
-                            }, [])
-                            .map(([n, w, b]) => (
-                              <tr key={n}>
-                                <td>
-                                  <strong>{n}.</strong>
-                                </td>
-                                <td>{w}</td>
-                                <td>{b || ""}</td>
-                              </tr>
-                            ))}
-                        </tbody>
-                      </table>
+                      <strong>{result}</strong>
                     </div>
+                  )}
 
-                    {!isGameStarted && (
-                      <>
-                        <div className="mb-2">
-                          <label>
-                            <strong>Select Game Mode:</strong>
-                          </label>
-                          <select
-                            className="form-select"
-                            value={gameMode}
-                            onChange={(e) => setGameMode(e.target.value)}
-                          >
-                            <option value="ai">Play with AI</option>
-                            <option value="twoPlayer">Two Player</option>
-                          </select>
-                        </div>
+                  <div style={{ marginTop: "20px", textAlign: "left" }}>
+                    {/* Move History Panel */}
+                    <div
+                      style={{
+                        flex: "0.5",
+                        minWidth: "180px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <h4
+                        style={{
+                          marginTop: "20px",
+                          color: "#fff",
+                          fontWeight: "600",
+                        }}
+                      >
+                        Moves
+                      </h4>
+                      <div
+                        style={{
+                          maxHeight: "200px",
+                          overflowY: "auto",
+                          marginBottom: "1rem",
+                        }}
+                      >
+                        <table className="table table-bordered text-center table-striped mb-0">
+                          <thead className="table-dark">
+                            <tr>
+                              <th>#</th>
+                              <th>White</th>
+                              <th>Black</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {history.length === 0 ? (
+                              <tr>
+                                <td colSpan="3">No moves yet</td>
+                              </tr>
+                            ) : (
+                              Array.from(
+                                { length: Math.ceil(history.length / 2) },
+                                (_, i) => (
+                                  <tr key={i}>
+                                    <td>{i + 1}</td>
+                                    <td>{history[2 * i] || ""}</td>
+                                    <td>{history[2 * i + 1] || ""}</td>
+                                  </tr>
+                                )
+                              )
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
 
-                        {gameMode === "ai" && (
-                          <div className="mb-2">
+                      {!isGameStarted && (
+                        <div className="flex flex-row mt-[20px] justify-evenly">
+                          <div className="mt-2 ">
                             <label>
-                              <strong>Select Side:</strong>
+                              <strong>Select Game Mode:</strong>
                             </label>
                             <select
-                              className="form-select"
-                              value={playerSide}
-                              onChange={(e) => setPlayerSide(e.target.value)}
+                              className="form-select mt-2 "
+                              style={{ width: "180px" }}
+                              value={gameMode}
+                              onChange={(e) => setGameMode(e.target.value)}
                             >
-                              <option value="w">White (You play first)</option>
-                              <option value="b">Black (AI plays first)</option>
+                              <option value="ai">Play with AI</option>
+                              <option value="twoPlayer">Two Player</option>
                             </select>
                           </div>
-                        )}
-                      </>
-                    )}
+
+                          {gameMode === "ai" && (
+                            <div className="mt-2">
+                              <label>
+                                <strong>Select Side:</strong>
+                              </label>
+                              <select
+                                className="form-select mt-2"
+                                style={{ width: "180px", marginLeft: "10px" }}
+                                value={playerSide}
+                                onChange={(e) => setPlayerSide(e.target.value)}
+                              >
+                                <option value="w">
+                                  White (You play first)
+                                </option>
+                                <option value="b">
+                                  Black (AI plays first)
+                                </option>
+                              </select>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex flex-row justify-between mt-[30px]">
+                    {["Play"].map((btn) => (
+                      <button
+                        key={btn}
+                        className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+                        style={{ borderRadius: "10px" }}
+                        onClick={
+                          btn === "Play"
+                            ? startGame
+                            : btn === "Dark Mode"
+                            ? () => setIsDarkMode((prev) => !prev)
+                            : () => {
+                                const routeMap = {
+                                  Puzzles: "/puzzles",
+                                  Lessons: "/lesson",
+                                  Analysis: "/analyse",
+                                };
+                                const route = routeMap[btn];
+                                if (route) navigate(route);
+                              }
+                        }
+                        disabled={btn === "Play" && isGameStarted}
+                      >
+                        {btn}
+                      </button>
+                    ))}
+                    <button
+                      onClick={resetGame}
+                      className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+                      style={{ borderRadius: "10px" }}
+                    >
+                      Restart Game
+                    </button>
                   </div>
                 </div>
               </div>
