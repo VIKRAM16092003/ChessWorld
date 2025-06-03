@@ -292,9 +292,7 @@ const SwissGame = () => {
               >
                 Back to Home
               </button>
-              {/* <Link to="/swissgame">
-                <IoArrowBackCircleSharp />
-              </Link> */}
+             
             </div>
 
             <div className="flex flex-row justify-center">

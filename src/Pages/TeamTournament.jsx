@@ -69,16 +69,7 @@ const TeamTournament = () => {
     return () => clearInterval(interval);
   }, [currentTurn, game, result, isGameStarted]);
 
-  // const makeAIMove = () => {
-  //   if (gameMode !== "ai") return;
-  //   const possibleMoves = game.moves();
-  //   if (game.isGameOver() || possibleMoves.length === 0) return;
 
-  //   const randomIndex = Math.floor(Math.random() * possibleMoves.length);
-  //   game.move(possibleMoves[randomIndex]);
-  //   updateGame(game);
-  //   setCurrentTurn(game.turn());
-  // };
 
   const updateGame = (gameInstance) => {
     setGame(new Chess(gameInstance.fen()));
@@ -257,6 +248,17 @@ const TeamTournament = () => {
               Back to Home
             </button>
           </div>
+          <div className="flex flex-row justify-center">
+            <p
+              className="text-center bg-white/30  text-shadow-lg top-12 shadow-lg h3 px-4 rounded-[20px] mb-3 py-3 w-[500px] gap-2"
+              style={{
+                fontFamily: "Anton sans-serif",
+                fontWeight: "700",
+              }}
+            >
+              TEAM TOURNAMENT
+            </p>
+          </div>
           {matchstart ? (
             <div
               className={`bg-white/50 border-[px] mt-3 border-[]  pb-[70px] w-[80vw] ml-[10vw] shadow-md rounded-[10px] start-game-wrapper ${
@@ -316,13 +318,10 @@ const TeamTournament = () => {
                   style={{
                     width: "100%",
                     maxWidth: "1400px",
-                    // background: isDarkMode
-                    //   ? "#1e1e1e"
-                    //   : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+                  
 
                     borderRadius: "12px",
-                    // boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
-                    // padding: "20px",
+                   
                     color: isDarkMode ? "white" : "black",
                   }}
                 >

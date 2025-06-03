@@ -9,7 +9,7 @@ import logo from "../../assets/logo.jpg";
 
 function StartGame() {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const timer = location.state?.timer || 600;
 
   const [game, setGame] = useState(new Chess());
@@ -226,12 +226,10 @@ function StartGame() {
             style={{
               width: "100%",
               maxWidth: "1400px",
-              // background: isDarkMode
-              //   ? "#1e1e1e"
-              //   : "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+      
 
               borderRadius: "12px",
-              // boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+             
               padding: "20px",
               color: isDarkMode ? "white" : "black",
             }}
