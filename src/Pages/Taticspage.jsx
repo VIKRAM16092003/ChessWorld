@@ -172,6 +172,7 @@ const Tacticspage = () => {
   const navigate = useNavigate();
   const [selectedBoardIndex, setSelectedBoardIndex] = useState(null);
 
+
   const boards = [
     board1,
     board2,
@@ -241,6 +242,7 @@ const Tacticspage = () => {
       "Opposition is crucial in king and pawn endgames. Gaining the opposition can force the opposing king to give ground, allowing your king to advance and support pawn promotion.",
     ],
   ];
+  
   const content7 = [
     [
       "Overloading is a powerful tactical motif in chess where a single piece is assigned too many defensive duties, making it vulnerable to tactical exploitation.",
@@ -279,213 +281,132 @@ const Tacticspage = () => {
 
   return (
     <div
-      className="bg-black/50  bg-cover bg-center h-[350vh]"
+      className="bg-black/50  bg-cover bg-center h-[370vh]"
       style={{ backgroundImage: `url(${chessbgimg})` }}
     >
-      <div className="bg-[#5b646d]/50 h-[350vh]">
-        {/* header */}
-        <div class="flex flex-row justify-between mb-2  px-[30px]">
-          <Link
-            to="/"
-            className="flex items-center space-x-3 text-white font-semibold p-4"
-            style={{ textDecoration: "none" }}
-          >
-            <img
-              src={logo}
-              alt="Company Logo"
-              className="w-20 h-20 rounded-full object-cover"
-            />
-            <p
-              className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
-              style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
+      <div className="bg-[#5b646d]/50 h-[370vh]">
+        <div className="bg-[#5b646d]/50 h-[370vh]">
+          {/* header */}
+          <div class="flex flex-row justify-between mb-2  px-[30px]">
+            <Link
+              to="/"
+              className="flex items-center space-x-3 text-white font-semibold p-4"
+              style={{ textDecoration: "none" }}
             >
-              CHESS{" "}
-              <span
-                class="text-white font-[300] tracking-[-1px] pl-2 text-[20px]
+              <img
+                src={logo}
+                alt="Company Logo"
+                className="w-20 h-20 rounded-full object-cover"
+              />
+              <p
+                className="text-[20px] font-bold text-black pt-3 tracking-[1px]"
+                style={{ wordSpacing: "-7px", letterSpacing: "0px" }}
+              >
+                CHESS{" "}
+                <span
+                  class="text-white font-[300] tracking-[-1px] pl-2 text-[20px]
                 "
-                style={{ letterSpacing: "-3px" }}
-              >
-                WORLD{" "}
-              </span>{" "}
-            </p>
-          </Link>
-          <button
-            className="w-[130px]  rounded-[10px] bg-green-700 hover:bg-green-800 text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
-            style={{ borderRadius: "10px", marginTop: "30px" }}
-            onClick={() => navigate("/")}
-          >
-            Back to Home
-          </button>
-        </div>
-
-        <div class="flex flex-row mt-[0px] items-center justify-center gap-4">
-          {/* <hr class="w-[28vw] border-[#EAE4D5]" style={{ color: "#fff" }} /> */}
-          <p
-            class="whitespace-nowrap text-justify bg-black/10 px-3 shadow-md rounded-[8px] text-[#F2F2F2] font-[800] text-[30px]"
-            style={{ fontFamily: "Anton sans-serif" }}
-          >
-            {" "}
-            Know More About Some Chess Tactics Here
-          </p>
-          {/* <hr class="w-[28vw]  " style={{ color: "#fff" }} /> */}
-        </div>
-
-        {/* boardcontainer */}
-        <div className="h-[2350px] border-[1px] border-[#EAE4D5] rounded-[10px] pt-5 ml-[5vw] pl-[10px] pt-2 mr-[5vw] bg-[#dae2e6]/20 p-1 mt-4 flex flex-wrap justify-evenly ">
-          {boards.map((board, index) => (
-            <div
-              key={index}
-              onClick={() => setSelectedBoardIndex(index)}
-              className="cursor-pointer"
-            >
-              <Chessboardpagefortatics
-                boardData={board}
-                contentData={content[index]}
-                highlightSquares={highlights[index]}
-                highlightPiece={highlightPieces[index]}
-                tacticgHeading={tacticgHeading[index]}
-                hideLineAfter={(index + 1) % 3 === 0}
-              />
-            </div>
-          ))}
-          <div
-            style={{
-              flex: "1",
-              minWidth: "250px",
-              padding: "10px",
-              textAlign: "center",
-            }}
-          >
-            <div className="player-box">
-              <h4>White</h4>
-              <div style={{ fontSize: "28px" }}>
-                {Math.floor(whiteTime / 60)}:
-                {String(whiteTime % 60).padStart(2, "0")}
-              </div>
-            </div>
-            <div className="player-box">
-              <h4>Black</h4>
-              <div style={{ fontSize: "28px", marginBottom: "20px" }}>
-                {Math.floor(blackTime / 60)}:
-                {String(blackTime % 60).padStart(2, "0")}
-              </div>
-            </div>
-
-            {result && (
-              <div
-                style={{
-                  backgroundColor: "red",
-                  color: "white",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  marginBottom: "20px",
-                }}
-              >
-                <strong>{result}</strong>
-              </div>
-            )}
-
+                  style={{ letterSpacing: "-3px" }}
+                >
+                  WORLD{" "}
+                </span>{" "}
+              </p>
+            </Link>
             <button
-              onClick={resetGame}
-              className="btn btn-outline-dark"
-              style={{ marginBottom: "10px" }}
+              className="w-[130px]  rounded-[10px] bg-[#047857] hover:bg-[#065f46] text-[#F2F2F2] font-[500]   mb-3 h-[45px] right"
+              style={{ borderRadius: "10px", marginTop: "30px" }}
+              onClick={() => navigate("/")}
             >
-              Restart Game
+              Back to Home
             </button>
-
-            <div style={{ marginTop: "20px", textAlign: "left" }}>
-              <h5>Chat</h5>
-              <div
-                style={{
-                  height: "150px",
-                  overflowY: "scroll",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                  padding: "10px",
-                  backgroundColor: isDarkMode ? "#222" : "#f9f9f9",
-                  color: isDarkMode ? "white" : "black",
-                  marginBottom: "10px",
-                }}
-              >
-                {chatLog.length === 0 && <div>No messages yet.</div>}
-                {chatLog.map((msg, i) => (
-                  <div key={i} style={{ marginBottom: "5px" }}>
-                    {msg}
-                  </div>
-                ))}
-              </div>
-
-              <input
-                type="text"
-                value={chat}
-                onChange={(e) => setChat(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSendChat()}
-                placeholder="Type your message"
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  borderRadius: "8px",
-                  border: "1px solid #ccc",
-                }}
-                disabled={!isGameStarted}
-              />
-              <button
-                onClick={handleSendChat}
-                disabled={!chat.trim() || !isGameStarted}
-                className="btn btn-primary"
-                style={{ marginTop: "5px", width: "100%" }}
-              >
-                Send
-              </button>
-            </div>
           </div>
 
-          {selectedBoardIndex !== null && (
-            <div
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedBoardIndex(null)}
-            >
-              <div
-                className="bg-white/20 rounded-lg shadow-lg max-w-[90vw] max-h-[90vh] overflow-auto p-6 relative"
-                onClick={(e) => e.stopPropagation()}
+          <div class=" mt-[20px] items-center justify-center gap-4">
+            <div className="flex flex-row justify-center">
+              <p
+                className="text-center bg-white/30  text-shadow-lg top-12 shadow-lg h3 px-4 rounded-[20px] mb-3 py-3 w-[600px] gap-2"
+                style={{
+                  fontFamily: "Anton sans-serif",
+                  fontWeight: "700",
+                }}
               >
-                <button
-                  className="absolute top-3 border-0 rounded-[10px] right-3 text-black bg-white w-[90px] h-[30px] font-bold text-2xl"
-                  onClick={() => setSelectedBoardIndex(null)}
-                  style={{ borderRadius: "10px" }}
-                  aria-label="Close"
-                >
-                  Close
-                </button>
-                <Chessboardpagefortatics
-                  boardData={boards[selectedBoardIndex]}
-                  contentData={content[selectedBoardIndex]}
-                  highlightSquares={highlights[selectedBoardIndex]}
-                  highlightPiece={highlightPieces[selectedBoardIndex]}
-                  tacticgHeading={tacticgHeading[selectedBoardIndex]}
-                  hideLineAfter={true}
-                />
+                KNOW MORE ABOUT TACTICS HERE
+              </p>
+            </div>
 
-                <div className="flex justify-between w-full mt-6">
-                  <button
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
-                    onClick={() => setSelectedBoardIndex((prev) => prev - 1)}
-                    disabled={selectedBoardIndex === 0}
+            {/* boardcontainer */}
+            <div>
+              <div className="h-[2350px] border-[1px] border-[#EAE4D5] rounded-[10px] pt-5 ml-[5vw] pl-[10px] pt-2 mr-[5vw] bg-[#dae2e6]/20 p-1 mt-4 flex flex-wrap justify-evenly ">
+                {boards.map((board, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setSelectedBoardIndex(index)}
+                    className="cursor-pointer"
                   >
-                    Previous
-                  </button>
+                    <Chessboardpagefortatics
+                      boardData={board}
+                      contentData={content[index]}
+                      highlightSquares={highlights[index]}
+                      highlightPiece={highlightPieces[index]}
+                      tacticgHeading={tacticgHeading[index]}
+                      hideLineAfter={(index + 1) % 3 === 0}
+                    />
+                  </div>
+                ))}
 
-                  <button
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
-                    onClick={() => setSelectedBoardIndex((prev) => prev + 1)}
-                    disabled={selectedBoardIndex === boards.length - 1}
+                {selectedBoardIndex !== null && (
+                  <div
+                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                    onClick={() => setSelectedBoardIndex(null)}
                   >
-                    Next
-                  </button>
-                </div>
+                    <div
+                      className="bg-white/20 rounded-lg shadow-lg max-w-[90vw] max-h-[90vh] overflow-auto p-6 relative"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <button
+                        className="absolute top-3 border-0 rounded-[10px] right-3 text-black bg-white w-[90px] h-[30px] font-bold text-2xl"
+                        onClick={() => setSelectedBoardIndex(null)}
+                        style={{ borderRadius: "10px" }}
+                        aria-label="Close"
+                      >
+                        Close
+                      </button>
+                      <Chessboardpagefortatics
+                        boardData={boards[selectedBoardIndex]}
+                        contentData={content[selectedBoardIndex]}
+                        highlightSquares={highlights[selectedBoardIndex]}
+                        highlightPiece={highlightPieces[selectedBoardIndex]}
+                        tacticgHeading={tacticgHeading[selectedBoardIndex]}
+                        hideLineAfter={true}
+                      />
+
+                      <div className="flex justify-between w-full mt-6">
+                        <button
+                          className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
+                          onClick={() =>
+                            setSelectedBoardIndex((prev) => prev - 1)
+                          }
+                          disabled={selectedBoardIndex === 0}
+                        >
+                          Previous
+                        </button>
+
+                        <button
+                          className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded disabled:opacity-50"
+                          onClick={() =>
+                            setSelectedBoardIndex((prev) => prev + 1)
+                          }
+                          disabled={selectedBoardIndex === boards.length - 1}
+                        >
+                          Next
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

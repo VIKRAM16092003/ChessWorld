@@ -279,7 +279,7 @@ const RoundRobin = () => {
 
           <div className="flex flex-row justify-center">
             <p
-              className="text-center bg-white/60  text-shadow-lg top-12 shadow-lg h3 px-4 rounded-[20px] mb-3 py-3 w-[500px] gap-2"
+              className="text-center bg-white/30  text-shadow-lg top-12 shadow-lg h3 px-4 rounded-[20px] mb-3 py-3 w-[500px] gap-2"
               style={{
    
                 fontFamily: "Anton sans-serif",
@@ -289,7 +289,7 @@ const RoundRobin = () => {
               ROUND ROBIN MATCH
             </p>
           </div>
-          <div className="flex border-2 border-[#fff] p-[50px] w-[96vw] ml-[2vw] bg-white/60 rounded-[20px] flex-row">
+          <div className="flex border-2 border-[#fff] p-[50px] w-[96vw] ml-[20px] bg-white/60 rounded-[20px] flex-row">
             <div className=" flex flex-col Justify-between justify-evenly mt-[40px] w-[240px] mb-[50px] ml-[60px]">
               {matches.map((round, index) => (
                 <div

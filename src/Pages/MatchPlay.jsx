@@ -153,9 +153,7 @@ const Matchplay = () => {
               }}
             >
               <div className="flex text-center w-[1000px] flex-row justify-center">
-                {/* <h2 className="text-white font-semibold text-[18px] pt-2 mb-[30px]">
-                  Matchplay Chess
-                </h2> */}
+             
               </div>
               <div className="flex flex-row justify-evenly mt-4">
                 <Chessboard
