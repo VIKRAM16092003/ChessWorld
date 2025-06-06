@@ -95,13 +95,14 @@ function WaitingRoom() {
                   Create Room
                 </button>
                 <div className="flex items-center space-x-3">
-                  <input
-                    type="text"
-                    placeholder="Enter Room Code"
-                    value={roomId}
-                    onChange={(e) => setRoomId(e.target.value.toUpperCase())}
-                    className="flex-grow px-4 py-3 border rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500 "style={{placeholder:"color-white"}}
-                  />
+                 <input
+  type="text"
+  placeholder="Enter Room Code"
+  value={roomId}
+  onChange={(e) => setRoomId(e.target.value.toUpperCase())}
+  className="flex-grow px-4 py-3 border rounded-md text-black placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
+
                   <button
                     onClick={joinRoom}
                     className="px-6 py-3 text-lg font-semibold bg-black/70 rounded hover:bg-green-600 transition-all "

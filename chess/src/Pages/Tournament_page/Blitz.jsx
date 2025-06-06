@@ -8,10 +8,11 @@ import bg from "../../assets/chessbgimg.jpg";
 import "./StartGame.css";
 import logo from '../../assets/logo.jpg'
 
-function ClassicalGame() {
+
+function Blitz() {
   const location = useLocation();
   const navigate = useNavigate();
-  const timer = location.state?.timer || 5400;
+  const timer = location.state?.timer || 180;
 
   const [game, setGame] = useState(new Chess());
   const [history, setHistory] = useState([]);
@@ -27,9 +28,10 @@ function ClassicalGame() {
   const [playerSide, setPlayerSide] = useState("w");
   const [gameMode, setGameMode] = useState("ai");
   const [showPopup, setShowPopup] = useState(true);
+ 
+   const closePopup = () => setShowPopup(false);
 
-  const closePopup = () => setShowPopup(false);
-
+  // Load and persist dark mode preference
   useEffect(() => {
     const storedMode = localStorage.getItem("isDarkMode");
     if (storedMode) setIsDarkMode(storedMode === "true");
@@ -39,6 +41,7 @@ function ClassicalGame() {
     localStorage.setItem("isDarkMode", isDarkMode);
   }, [isDarkMode]);
 
+  // Timer logic
   useEffect(() => {
     if (!isGameStarted || game.isGameOver() || result) return;
 
@@ -168,84 +171,94 @@ function ClassicalGame() {
       setChat("");
     }
   };
+  const showInstructions = () => {
+      Swal.fire({
+        icon: "info",
+        title: "🎯 Instructions",
+        html: `
+          <ul style="text-align: left;">
+            <li>Wait for opponent to join and click Start Game.</li>
+            <li>Each player is assigned White or Black.</li>
+            <li>Timer runs for each turn. If it hits 0, you lose.</li>
+            <li>Drag and drop pieces to move. Game ends on checkmate, draw, or timeout.</li>
+            <li>Use chat to message your opponent.</li>
+          </ul>
+        `,
+        confirmButtonText: "Got it!",
+      });
+    };
 
   return (
-    <div className="p-5 bg-blue-100 min-h-screen"
+    <div
+      className="p-5 bg-blue-100 min-h-screen"
       style={{
         background: `url(${bg}) no-repeat center center`,
         backgroundSize: "cover",
       }}
     >
+       {/* Instruction Popup */}
       {showPopup && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-            <div className="bg-white/90 h-[510px] rounded-[20px] p-2 w-[420px]">
-              <div className="flex flex-row justify-end">
-                <button
-                  onClick={closePopup}
-                  className="px-4 py-2 w-[80px] rounded-4 h-[40px] bg-green-700 text-white  hover:bg-green-800 transition"
-                >
-                  Close
-                </button>
-              </div>
-
-              <div className="flex flex-row justify-center ">
-                <h2
-                  className=" text-shadow-lg bg-white/10 rounded-[10px] shadow-lg p-2 w-[200px] font-semibold mb-4 flex justify-center"
-                  style={{
-                    color: "#30475E",
-                    fontWeight: "700",
-                    fontSize: "20px",
-                    marginTop: "20px",
-
-                    fontFamily: "Anton sans-serif",
-                  }}
-                >
-                  INSTRUCTION
-                </h2>
-              </div>
-
-              <div className="mt-[0px]">
-                <p className="mb-4 text-[#30475E] text-[16px] font-[600] px-[20px] text-justify flex justify-center">
-                  Welcome, players! <br />
-                  
-                  You're about to enter the exciting world of Match Play Chess,
-                  where two players face off in multiple rounds to determine the
-                  ultimate winner.
-                </p>
-
-                <ul className="text-justify text-[15px] text-[#596E79] font-[600] ml-3 list-disc "style={{width:"368px"}}>
-                  <li className="m-[2px]">
-                    {" "}
-                    You’ll play multiple games against the same opponent,
-                    alternating between white and black pieces.
-                  </li>
-                  <li className="m-[2px]">
-                    {" "}
-                    For every win, you’ll earn 1 point. No points are awarded
-                    for losses.{" "}
-                  </li>
-                  <li className="m-[2px]">
-                    The player with the most wins at the end of all rounds is
-                    declared the Match Winner.
-                  </li>
-                  <li className="m-[2px]">
-                    {" "}
-                    Play smart, plan your moves carefully, and use your time
-                    wisely.
-                  </li>
-                  <li className="m-[2px]">
-                    A timer will keep the game fair and fast-paced.
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+        <div className="bg-white/90 h-[510px] rounded-[20px] p-2 w-[420px]">
+          <div className="flex flex-row justify-end">
+            <button
+              onClick={closePopup}
+              className="px-4 py-2 w-[80px] rounded-4 h-[40px] bg-green-700 text-white hover:bg-green-800 transition"
+            >
+              Close
+            </button>
           </div>
-        )}
-
-         <div className="flex flex-row justify-between mb-2 ">
+          <div className="flex flex-row justify-center ">
+            <h2
+              className=" text-shadow-lg rounded-[10px] shadow-lg p-2 w-[200px] font-semibold flex justify-center"
+              style={{
+                color: "#30475E",
+                fontWeight: "700",
+                fontSize: "20px",
+                marginTop: "0px",
+                fontFamily: "Anton sans-serif",
+              }}
+            >
+              Instruction
+            </h2>
+          </div>
+          <div className="mt-[0px]">
+            <p className="mb-4 text-[#30475E] text-[16px] font-[600] px-[20px] text-justify flex justify-center mt-5">
+              Welcome, players! <br />
+              You're about to enter the exciting world of Match Play Chess,
+              where two players face off in multiple rounds to determine the
+              ultimate winner
+            </p>
+            <ul
+              className="text-justify text-[15px] text-[#596E79] font-[600] ml-3 list-disc"
+              style={{ width: "368px" }}
+            >
+              <li>
+                You’ll play multiple games against the same opponent,
+                alternating between white and black pieces.
+              </li>
+              <li>
+                For every win, you’ll earn 1 point. No points are awarded
+                for losses
+              </li>
+              <li>
+                The player with the most wins at the end of all rounds is
+                declared the Match Winner.
+              </li>
+              <li>
+                Play smart, plan your moves carefully, and use your time
+                wisely.
+              </li>
+              <li>A timer will keep the game fair and fast-paced.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )}
+    <div className="flex flex-row justify-between mb-2 ">
       <Link
         to="/"
-        className="flex items-center space-x-3 text-white font-semibold pL-4"
+        className="flex items-center space-x-3 text-white font-semibold pb-4"
         style={{ textDecoration: "none" }}
       >
         <img
@@ -278,7 +291,7 @@ function ClassicalGame() {
             {/* Center - Title */}
             <div className="flex-grow text-center">
               <center>
-              <p className="text-white font-bold text-lg tracking-wider text-shadow-lg bg-white/10 w-[220px] rounded py-2">CLASSICAL GAME</p>
+              <p className="text-white font-bold text-lg tracking-wider text-shadow-lg bg-white/10 w-[220px] rounded py-2">BLITZ GAME</p>
               </center>
             </div>
       
@@ -316,7 +329,6 @@ function ClassicalGame() {
             )}
           </div>
 
-      
 
       <div className={`start-game-wrapper ${isDarkMode ? "dark-mode" : ""}`}>
         <div
@@ -468,4 +480,4 @@ function ClassicalGame() {
   );
 }
 
-export default ClassicalGame;
+export default Blitz;

@@ -29,13 +29,18 @@ import Classical from './Pages/Tournament_page/Classical'
 import RazorPay from './Pages/RazorPay'
 import Login from './Pages/Login'
 import RegisterPage from './Pages/Register'
-import Round from './Pages/RoundRobin'
+import Round from './Pages/Tournament_page/RoundRobin'
 import Bullet from './Pages/Tournament_page/Bullet'
 import ArmageddonGame from './Pages/Tournament_page/Armageddon';
 import Otb from './Pages/Tournament_page/Otb';
 import WaitingRoom from './components/WaitingRoom';
 import ChessGame from './components/ChessGame';
-// import Tactics from './Pages/Tactics';
+import Tactics from './Pages/Tactics';
+import Blitz from './Pages/Tournament_page/Blitz'
+import MatchPlay from './Pages/MatchPlay';
+import SwissGame from './Pages/Tournament_page/SwissGame';
+import Team from './Pages/Tournament_page/TeamTournament';
+
 
 const App = () => {
   return (
@@ -45,8 +50,12 @@ const App = () => {
       <div style={{ flex: "1" }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/team" element={<Team/>}/>
         <Route path="/otb" element={<Otb/>}/>
-        {/* <Route path="/tactics" element={<Tactics/>}/> */}
+        <Route path="/matchPlay" element={<MatchPlay/>}/>
+        <Route path="/swissGame" element={<SwissGame/>}/>
+        <Route path="/blitz" element={<Blitz/>}/>
+        <Route path="/tactics" element={<Tactics/>}/>
         <Route path="/online" element={<WaitingRoom />} />
         <Route path="/game/:roomId" element={<ChessGame />} />
         <Route path="/armageddon" element={<ArmageddonGame/>}/>

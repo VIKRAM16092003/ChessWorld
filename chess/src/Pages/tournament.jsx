@@ -4,14 +4,14 @@ import bg from '../assets/chessbgimg.jpg';
 function ChessTournaments() {
   const formats = [
     { name: 'Round Robin', desc: 'Every player plays against every other player', icon: '🔁',link:'/round' },
-    { name: 'Swiss System', desc: 'Players paired each round based on score', icon: '🔀',link:'/bullet' },
-    { name: 'Match Play', desc: 'Two players face off over multiple games', icon: '⚔️' },
-    { name: 'Team Tournaments', desc: 'Teams (schools, clubs, countries) compete', icon: '👥' },
+    { name: 'Swiss System', desc: 'Players paired each round based on score', icon: '🔀',link:'/swissGame' },
+    { name: 'Match Play', desc: 'Two players face off over multiple games', icon: '⚔️',link:'/matchPlay' },
+    { name: 'Team Tournaments', desc: 'Teams (schools, clubs, countries) compete', icon: '👥',link:'/team' },
   ];
 
   const timeControls = [
     { name: 'Classical', desc: 'Long games (90+ minutes per player)', icon: '⏱️', link: '/classical' },
-    { name: 'Blitz', desc: '3–5 minutes per player. Each play should play for 3-5 minutes', icon: '⚡' },
+    { name: 'Blitz', desc: '3–5 minutes per player. Each play should play for 3-5 minutes', icon: '⚡',link:'/blitz' },
     { name: 'Bullet', desc: '1 minute or less per player. Each player should play for 1 minutes', icon: '🔥',link:'/bullet' },
    
   ];
